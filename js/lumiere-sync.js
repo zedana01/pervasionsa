@@ -21,7 +21,7 @@ const DEFAULT_LUMIERE_DATA = {
     instagram: 'https://instagram.com',
     twitter: 'https://twitter.com',
     tiktok: 'https://tiktok.com',
-    adminPassword: 'admin'
+    adminPassword: 'Abdo@ProF_2000'
   },
   menu: [
     {

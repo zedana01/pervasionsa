@@ -446,9 +446,7 @@
       <div class="auth-icon"><i class="fa-solid fa-mug-saucer"></i></div>
       <h2 class="auth-title">لوميير كافيه & لاونج</h2>
       <p class="auth-subtitle">لوحة التحكم وإدارة المحتوى والمنيو</p>
-      <div style="background: var(--emerald-soft); border: 1px solid var(--border-emerald); color: var(--emerald); padding: 8px 14px; border-radius: 8px; font-size: 12.5px; margin-bottom: 18px;">
-        كلمة المرور الافتراضية: <strong>admin</strong>
-      </div>
+      
       <form onsubmit="handleLogin(event)">
         <input type="password" id="authInput" class="auth-input" placeholder="أدخل كلمة المرور..." required autofocus>
         <div id="authError" class="auth-error"><i class="fa-solid fa-circle-exclamation"></i> كلمة المرور غير صحيحة، حاول مجدداً.</div>
@@ -818,9 +816,9 @@
 
     function handleLogin(e) {
       e.preventDefault();
-      const pwd = document.getElementById('authInput').value;
+      const pwd = document.getElementById('authInput').value.trim();
       const data = getLumiereData();
-      const currentPwd = data.settings.adminPassword || 'admin';
+      const currentPwd = data.settings.adminPassword || 'Abdo@ProF_2000';
 
       if (pwd === currentPwd) {
         sessionStorage.setItem(LUMIERE_AUTH_KEY, 'true');
@@ -1072,8 +1070,14 @@
       const cnf = document.getElementById('confirmPassword').value;
       const errEl = document.getElementById('pwdError');
 
-      if (cur !== (data.settings.adminPassword || 'admin')) {
+      const currentPwd = data.settings.adminPassword || 'Abdo@ProF_2000';
+      if (cur !== currentPwd) {
         errEl.textContent = 'كلمة المرور الحالية غير صحيحة!';
+        errEl.style.display = 'block';
+        return;
+      }
+      if (nw.length < 4) {
+        errEl.textContent = 'كلمة المرور الجديدة يجب أن تكون 4 خانات على الأقل!';
         errEl.style.display = 'block';
         return;
       }
