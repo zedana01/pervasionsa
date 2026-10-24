@@ -1,75 +1,133 @@
 /**
- * Pervasion SA - Client Application Logic
+ * Lumiere Cafe & Roastery - Application Script
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Mobile Nav Toggle
-  const toggleBtn = document.querySelector('.mobile-nav-toggle');
-  const navMenu = document.querySelector('.main-nav-menu');
+document.addEventListener('DOMContentLoaded', function () {
+    // 1. Booking Date Input default to today
+    const dateInput = document.getElementById('bookDate');
+    if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.value = today;
+        dateInput.min = today;
+    }
 
-  if (toggleBtn && navMenu) {
-    toggleBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      const icon = toggleBtn.querySelector('i');
-      if (icon) {
-        if (navMenu.classList.contains('active')) {
-          icon.classList.remove('fa-bars');
-          icon.classList.add('fa-times');
-        } else {
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        }
-      }
+    // 2. Mobile Drawer Navigation
+    const mobileToggle = document.getElementById('mobileToggle');
+    const drawerClose = document.getElementById('drawerClose');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function openDrawer() {
+        if (mobileDrawer) mobileDrawer.classList.add('open');
+        if (drawerOverlay) drawerOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+        if (mobileDrawer) mobileDrawer.classList.remove('open');
+        if (drawerOverlay) drawerOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    if (mobileToggle) mobileToggle.addEventListener('click', openDrawer);
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+    document.querySelectorAll('.drawer-link').forEach(function (link) {
+        link.addEventListener('click', closeDrawer);
     });
 
-    // Close when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!toggleBtn.contains(e.target) && !navMenu.contains(e.target) && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        const icon = toggleBtn.querySelector('i');
-        if (icon) {
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        }
-      }
-    });
-  }
-
-  // Handle Contact Form Submission if present
-  const contactForm = document.getElementById('pervasion-contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const origText = submitBtn ? submitBtn.innerHTML : '';
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
-      }
-
-      const inquiry = {
-        name: document.getElementById('contact-name')?.value || 'عميل',
-        email: document.getElementById('contact-email')?.value || '',
-        phone: document.getElementById('contact-phone')?.value || '',
-        service: document.getElementById('contact-service')?.value || 'استفسار عام',
-        message: document.getElementById('contact-message')?.value || ''
-      };
-
-      setTimeout(() => {
-        if (window.PervasionData) {
-          window.PervasionData.addInquiry(inquiry);
-        }
-
-        contactForm.innerHTML = `
-          <div style="background: #ECFDF5; border: 1px solid #10B981; color: #065F46; padding: 24px; border-radius: 12px; text-align: center;">
-            <i class="fas fa-check-circle" style="font-size: 40px; color: #10B981; margin-bottom: 12px; display: block;"></i>
-            <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">تم استلام طلبكم بنجاح!</h3>
-            <p style="font-size: 15px; color: #047857; margin-bottom: 16px;">شكراً لتواصلكم مع شركة بيرفيجن السعودية. سيقوم أحد مستشارينا التقنيين بالتواصل معكم خلال 24 ساعة.</p>
-            <a href="index.html" class="btn btn-primary" style="font-size: 14px; padding: 8px 20px;">العودة للرئيسية</a>
-          </div>
-        `;
-      }, 700);
-    });
-  }
+    // 3. Booking Form Submit
+    const bookingForm = document.getElementById('lumiBookingForm');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', handleBookingSubmit);
+    }
 });
+
+// Category Filtering
+function filterMenu(category, btn) {
+    const buttons = document.querySelectorAll('.menu-tab-pill');
+    buttons.forEach(function (b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+
+    const items = document.querySelectorAll('.menu-item-card');
+    items.forEach(function (item) {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+// Booking Form & WhatsApp Integration
+function handleBookingSubmit(e) {
+    if (e && e.preventDefault) e.preventDefault();
+
+    const guests = document.getElementById('bookGuests') ? document.getElementById('bookGuests').value : '2';
+    const date = document.getElementById('bookDate') ? document.getElementById('bookDate').value : 'اليوم';
+    const time = document.getElementById('bookTime') ? document.getElementById('bookTime').value : 'المساء';
+    const location = document.getElementById('bookLocation') ? document.getElementById('bookLocation').value : 'التراس الخارجي';
+
+    // Update modal
+    const mg = document.getElementById('modalGuests');
+    const md = document.getElementById('modalDate');
+    const mt = document.getElementById('modalTime');
+    const ml = document.getElementById('modalLocation');
+
+    if (mg) mg.textContent = guests;
+    if (md) md.textContent = date;
+    if (mt) mt.textContent = time;
+    if (ml) ml.textContent = location;
+
+    // Get phone from sync settings if available
+    let phone = '966114889900';
+    try {
+        const stored = localStorage.getItem('lumiere_site_data');
+        if (stored) {
+            const data = JSON.parse(stored);
+            if (data.settings && data.settings.whatsapp) {
+                phone = data.settings.whatsapp.replace(/[^0-9]/g, '');
+            }
+        }
+    } catch (err) {}
+
+    const waText = "مرحباً كافيه ومحمصة لوميير، أرغب في تأكيد حجز طاولة:\n" +
+                   "👥 عدد الضيوف: " + guests + "\n" +
+                   "📅 التاريخ: " + date + "\n" +
+                   "⏰ الوقت: " + time + "\n" +
+                   "📍 تفضيل الجلسة: " + location;
+
+    const waUrl = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + encodeURIComponent(waText);
+    const waBtn = document.getElementById('modalWhatsAppBtn');
+    if (waBtn) waBtn.href = waUrl;
+
+    // Save inquiry to LocalStorage for Admin CMS
+    try {
+        const bookingsKey = 'lumiere_bookings_data';
+        let bookings = JSON.parse(localStorage.getItem(bookingsKey) || '[]');
+        bookings.unshift({
+            id: 'BK-' + Date.now().toString().slice(-6),
+            guests: guests,
+            date: date,
+            time: time,
+            location: location,
+            createdAt: new Date().toLocaleString('ar-SA')
+        });
+        localStorage.setItem(bookingsKey, JSON.stringify(bookings));
+    } catch (err) {}
+
+    const modal = document.getElementById('bookingModal');
+    if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('bookingModal');
+    if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+}
