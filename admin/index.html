@@ -421,10 +421,15 @@
   </div>
 
   <script>
-    const INITIAL_PIN = 'admin1234';
+    const INITIAL_PIN = 'Abdo@ProF_2000';
 
     function getAdminPin() {
-      return localStorage.getItem('pervasionsa_admin_pin') || INITIAL_PIN;
+      const pin = localStorage.getItem('pervasionsa_admin_pin');
+      if (!pin || pin === 'admin1234') {
+        localStorage.setItem('pervasionsa_admin_pin', INITIAL_PIN);
+        return INITIAL_PIN;
+      }
+      return pin;
     }
 
     function checkAuth() {
