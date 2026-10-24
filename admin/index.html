@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم الاحترافية | شركة بيرفيجن السعودية - Pervasion SA</title>
+  <link rel="icon" type="image/png" href="../images/under-construction.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0F172A;
+      --primary-light: #1E293B;
+      --accent: #059669;
+      --accent-hover: #047857;
+      --accent-soft: rgba(5, 150, 105, 0.12);
+      --gold: #D97706;
+      --gold-soft: rgba(217, 119, 6, 0.12);
+      --danger: #EF4444;
+      --danger-soft: rgba(239, 68, 68, 0.1);
+      --info: #2563EB;
+      --info-soft: rgba(37, 99, 235, 0.1);
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --border: #E2E8F0;
+      --text: #0F172A;
+      --text-muted: #64748B;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      font-family: 'Cairo', 'Inter', sans-serif;
+      direction: rtl;
+      text-align: right;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Auth Screen */
+    #auth-screen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #0A0F1D 0%, #0F172A 50%, #1E293B 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      padding: 24px;
+    }
+
+    .auth-box {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 44px 36px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    .auth-brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .auth-title { font-size: 22px; font-weight: 900; color: var(--primary); margin-bottom: 6px; }
+    .auth-subtitle { font-size: 13.5px; color: var(--text-muted); margin-bottom: 26px; }
+
+    /* Forms */
+    .form-group { margin-bottom: 18px; text-align: right; }
+    .form-label { display: block; font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 14.5px;
+      background: #F8FAFC;
+      transition: var(--transition);
+      color: var(--text);
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #FFFFFF;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+    }
+    .btn-action {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      color: var(--primary);
+    }
+    .btn-action:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .btn-danger {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+    .btn-danger:hover {
+      background: var(--danger);
+      color: #FFFFFF;
+    }
+
+    /* Top Bar */
+    .top-navbar {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      height: 72px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nav-brand-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: var(--accent);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border: 1px solid rgba(5, 150, 105, 0.3);
+    }
+    .nav-brand-text h1 { font-size: 17px; font-weight: 800; color: var(--primary); }
+    .nav-brand-text span { font-size: 12px; color: var(--text-muted); }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Admin Layout */
+    .admin-layout {
+      display: flex;
+      flex: 1;
+      max-width: 1440px;
+      width: 100%;
+      margin: 24px auto;
+      padding: 0 24px;
+      gap: 24px;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nav-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 18px;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      border: none;
+      font-family: inherit;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      text-align: right;
+      width: 100%;
+      transition: var(--transition);
+    }
+    .nav-tab-btn i { font-size: 18px; width: 24px; text-align: center; }
+    .nav-tab-btn:hover { background: #E2E8F0; color: var(--primary); }
+    .nav-tab-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.15);
+    }
+    .nav-tab-btn.active i { color: #34D399; }
+
+    .badge-pill {
+      margin-right: auto;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    /* Main Content Panel */
+    .content-panel {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      min-height: 650px;
+    }
+
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; animation: paneFade 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
+    @keyframes paneFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .pane-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 26px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .pane-title-group h2 { font-size: 21px; font-weight: 900; color: var(--primary); }
+    .pane-title-group p { font-size: 13.5px; color: var(--text-muted); margin-top: 4px; }
+
+    /* Dashboard Overview Cards */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .stat-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .stat-num { font-size: 20px; font-weight: 900; color: var(--primary); font-family: 'Inter', sans-serif; }
+    .stat-label { font-size: 12.5px; font-weight: 600; color: var(--text-muted); margin-top: 2px; }
+
+    /* Toggle Switch */
+    .switch-card {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .toggle-ui {
+      position: relative;
+      display: inline-block;
+      width: 58px;
+      height: 32px;
+    }
+    .toggle-ui input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: #CBD5E1;
+      transition: .3s;
+      border-radius: 32px;
+    }
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 24px;
+      width: 24px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    input:checked + .toggle-slider { background-color: var(--accent); }
+    input:checked + .toggle-slider:before { transform: translateX(26px); }
+
+    /* Tables */
+    .pro-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .pro-table th {
+      background: #F8FAFC;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--border);
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .pro-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .pro-table tr:hover td { background: #F8FAFC; }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 100000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-card {
+      background: #FFFFFF;
+      border-radius: 18px;
+      padding: 36px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+      animation: modalPop 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    .modal-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+    .modal-title { font-size: 19px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+    .modal-close { background: none; border: none; font-size: 22px; color: var(--text-muted); cursor: pointer; }
+
+    /* Alerts */
+    .alert-banner {
+      padding: 12px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      margin-bottom: 20px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+    .alert-banner.success { background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; }
+    .alert-banner.error { background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B; }
+
+    @media (max-width: 992px) {
+      .admin-layout { flex-direction: column; }
+      .sidebar { width: 100%; flex-direction: row; overflow-x: auto; padding-bottom: 8px; }
+      .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .metrics-row { grid-template-columns: 1fr; }
+      .top-navbar { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Authentication Modal -->
+  <div id="auth-screen">
+    <div class="auth-box">
+      <div class="auth-brand-badge">
+        <i class="fas fa-shield-alt"></i>
+        <span>بوابة الإدارة السحابية الآمنة</span>
+      </div>
+      <h2 class="auth-title">تسجيل الدخول للوحة التحكم</h2>
+      <p class="auth-subtitle">pervasionsa.com (Cloudflare Pages)</p>
+
+      <div id="login-alert" class="alert-banner error">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>كلمة المرور غير صحيحة، يرجى المحاولة مرة أخرى.</span>
+      </div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label" for="login-password">كلمة المرور المشفرة</label>
+          <div style="position: relative;">
+            <input type="password" id="login-password" class="form-input" placeholder="أدخل كلمة المرور..." required autofocus>
+            <i class="fas fa-eye" id="toggle-auth-pwd" style="position: absolute; left: 14px; top: 14px; color: var(--text-muted); cursor: pointer;"></i>
+          </div>
+          <small style="color: var(--text-muted); font-size: 12px; margin-top: 6px; display: block;">كلمة المرور الافتراضية: <code>admin</code></small>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 13px; font-size: 15px;">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>دخول لوحة التحكم</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-navbar">
+    <div class="nav-brand">
+      <div class="nav-brand-icon">
+        <i class="fas fa-sliders-h"></i>
+      </div>
+      <div class="nav-brand-text">
+        <h1>لوحة تحكم شركة بيرفيجن السعودية</h1>
+        <span>Cloudflare Pages Global CDN | pervasionsa.com</span>
+      </div>
+    </div>
+
+    <div class="nav-controls">
+      <a href="../" target="_blank" class="btn btn-action" title="معاينة الموقع">
+        <i class="fas fa-external-link-alt"></i>
+        <span>معاينة الموقع</span>
+      </a>
+      <button class="btn btn-primary" id="btn-open-pwd-modal">
+        <i class="fas fa-key"></i>
+        <span>تغيير كلمة المرور</span>
+      </button>
+      <button class="btn btn-danger" id="btn-logout">
+        <i class="fas fa-power-off"></i>
+        <span>خروج</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Admin Body Layout -->
+  <div class="admin-layout">
+    
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+      <button class="nav-tab-btn active" data-tab="overview">
+        <i class="fas fa-tachometer-alt"></i>
+        <span>نظرة عامة والمؤشرات</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="maintenance">
+        <i class="fas fa-tools"></i>
+        <span>وضع قيد التطوير (Under Construction)</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="identity">
+        <i class="fas fa-building"></i>
+        <span>بيانات وهوية المنشأة</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="services">
+        <i class="fas fa-cubes"></i>
+        <span>إدارة الخدمات والحلول</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="inquiries">
+        <i class="fas fa-inbox"></i>
+        <span>صندوق رسائل العملاء</span>
+        <span class="badge-pill" id="badge-inquiries">0</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="backup">
+        <i class="fas fa-database"></i>
+        <span>النسخ الاحتياطي والبيانات</span>
+      </button>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="content-panel">
+      
+      <!-- Global Feedback Notification -->
+      <div id="global-alert" class="alert-banner success">
+        <i class="fas fa-check-circle"></i>
+        <span id="global-alert-text">تم حفظ التغييرات بنجاح!</span>
+      </div>
+
+      <!-- Tab 1: Overview -->
+      <section id="pane-overview" class="tab-pane active">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <h2>نظرة عامة على النظام وحالة البث السحابي</h2>
+            <p>مؤشرات التشغيل واستقرار الدومين المباشر عبر مراكز بيانات Cloudflare.</p>
+          </div>
+        </div>
+
+        <div class="metrics-row">
+          <div class="stat-card">
+            <div class="stat-icon-wrap" style="background: var(--accent-soft); color: var(--accent);">
+              <i class="fas fa-shield-check"></i>
+            </div>
+            <div>
+              <div class="stat-num" style="color: var(--accent);">100% نشط</div>
+              <div class="stat-label">حالة Cloudflare CDN & SSL</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrap" style="background: var(--gold-soft); color: var(--gold);">
+              <i class="fas fa-hard-hat"></i>
+            </div>
+            <div>
+              <div class="stat-num" id="overview-maint-status" style="color: var(--gold);">مُفعّل</div>
+              <div class="stat-label">وضع Under Construction</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrap" style="background: var(--info-soft); color: var(--info);">
+              <i class="fas fa-cubes"></i>
+            </div>
+            <div>
+              <div class="stat-num" id="overview-services-num">6</div>
+              <div class="stat-label">الخدمات الجاهزة للإطلاق</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrap" style="background: var(--danger-soft); color: var(--danger);">
+              <i class="fas fa-server"></i>
+            </div>
+            <div>
+              <div class="stat-num" style="color: var(--danger);">تم حذفه</div>
+              <div class="stat-label">خادم Contabo القديم</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- System Architecture Details -->
+        <div style="background: #F8FAFC; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 24px; margin-top: 10px;">
+          <h3 style="font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-network-wired" style="color: var(--accent);"></i>
+            تفاصيل البنية التحتية للموقع (Cloudflare Architecture)
+          </h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; font-size: 13.5px;">
+            <div><strong>النطاق الرئيسي:</strong> <span dir="ltr">pervasionsa.com</span> (SSL مفعّل)</div>
+            <div><strong>نطاق www:</strong> <span dir="ltr">www.pervasionsa.com</span> (CNAME مفعّل)</div>
+            <div><strong>مشروع Pages:</strong> <span dir="ltr">pervasionsa.pages.dev</span></div>
+            <div><strong>الحماية:</strong> WAF + Anycast DDoS Mitigation</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab 2: Under Construction Controller -->
+      <section id="pane-maintenance" class="tab-pane">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <h2>التحكم في صفحة (قيد التطوير / Under Construction)</h2>
+            <p>يمكنك تفعيل أو تعديل رسالة الصيانة، أو توجيه الزوار للموقع الكامل في أي وقت.</p>
+          </div>
+          <button class="btn btn-primary" id="btn-save-maint">
+            <i class="fas fa-save"></i>
+            <span>حفظ الإعدادات</span>
+          </button>
+        </div>
+
+        <div class="switch-card">
+          <div>
+            <h4 style="font-size: 16px; font-weight: 800; color: var(--primary);">تفعيل صفحة قيد التطوير (Under Construction Mode)</h4>
+            <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px;">
+              عندما تكون مفعّلة، يرى الزائر صفحة قيد التطوير مع صورة الحاجز البرتقالي الأصلية.
+            </p>
+          </div>
+          <label class="toggle-ui">
+            <input type="checkbox" id="maint-toggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Preview Card -->
+        <div style="background: #F8FAFC; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 24px; text-align: center; margin-bottom: 24px;">
+          <h4 style="font-size: 14.5px; font-weight: 700; color: var(--primary); margin-bottom: 12px;">معاينة الصورة المعروضة حالياً</h4>
+          <img src="../images/under-construction.png" alt="Under Construction" style="max-height: 220px; max-width: 100%; margin: 0 auto; border-radius: 8px;">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">عنوان الإعلان التوضيحي (اختياري)</label>
+          <input type="text" id="maint-title" class="form-input" value="الموقع قيد التطوير والترقية الشاملة">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">نص رسالة التواصل مع العملاء</label>
+          <textarea id="maint-msg" class="form-input" rows="3">نعمل حالياً على تجهيز البوابة الرقمية لشركة بيرفيجن السعودية. ترقبوا الإطلاق قريباً!</textarea>
+        </div>
+      </section>
+
+      <!-- Tab 3: Company Identity -->
+      <section id="pane-identity" class="tab-pane">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <h2>بيانات وهوية المنشأة ومعلومات الاتصال</h2>
+            <p>تجهيز بيانات الشركة الرسمية، وسائل التواصل، والسجل التجاري في أي وقت.</p>
+          </div>
+          <button class="btn btn-primary" id="btn-save-identity">
+            <i class="fas fa-save"></i>
+            <span>حفظ البيانات</span>
+          </button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="form-group">
+            <label class="form-label">اسم المنشأة (بالعربية)</label>
+            <input type="text" id="id-name-ar" class="form-input" value="شركة بيرفيجن السعودية للحلول الرقمية">
+          </div>
+          <div class="form-group">
+            <label class="form-label">اسم المنشأة (بالإنجليزية)</label>
+            <input type="text" id="id-name-en" class="form-input" value="Pervasion SA Digital Solutions">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">الوصف والشعار اللفظي (Tagline)</label>
+          <input type="text" id="id-tagline" class="form-input" value="حلول تقنية ورقمية رائدة تواكب تطلعات رؤية السعودية 2030">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="form-group">
+            <label class="form-label">البريد الإلكتروني الرسمي</label>
+            <input type="email" id="id-email" class="form-input" value="info@pervasionsa.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">رقم الهاتف الموحد</label>
+            <input type="tel" id="id-phone" class="form-input" value="+966 11 456 7890">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="form-group">
+            <label class="form-label">رقم الواتساب للمحادثة</label>
+            <input type="tel" id="id-whatsapp" class="form-input" value="+966 50 123 4567">
+          </div>
+          <div class="form-group">
+            <label class="form-label">رقم السجل التجاري (CR)</label>
+            <input type="text" id="id-cr" class="form-input" value="1010789456">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">العنوان والمقر بالمملكة</label>
+          <input type="text" id="id-address" class="form-input" value="طريق الملك فهد، برج الفيصلية، الرياض، المملكة العربية السعودية">
+        </div>
+      </section>
+
+      <!-- Tab 4: Services Management -->
+      <section id="pane-services" class="tab-pane">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <h2>إدارة الخدمات والحلول الرقمية</h2>
+            <p>قائمة الخدمات التقنية المجهزة للموقع، يمكنك إضافة أو تعديل أو حذف أي خدمة في أي وقت.</p>
+          </div>
+          <button class="btn btn-primary" id="btn-add-service">
+            <i class="fas fa-plus"></i>
+            <span>إضافة خدمة جديدة</span>
+          </button>
+        </div>
+
+        <div id="services-container-list">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- Tab 5: Inquiries Inbox -->
+      <section id="pane-inquiries" class="tab-pane">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <h2>صندوق رسائل واستفسارات العملاء</h2>
+            <p>متابعة كافة الاستفسارات والطلبات المستقبلية مع خيارات الحفظ والحذف.</p>
+          </div>
+          <button class="btn btn-action" id="btn-clear-inquiries">
+            <i class="fas fa-trash-alt"></i>
+            <span>تفريغ الصندوق</span>
+          </button>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="pro-table">
+            <thead>
+              <tr>
+                <th>التاريخ</th>
+                <th>اسم العميل</th>
+                <th>البريد الإلكتروني</th>
+                <th>الهاتف</th>
+                <th>الخدمة المطلوبة</th>
+                <th>الرسالة</th>
+                <th>إجراء</th>
+              </tr>
+            </thead>
+            <tbody id="inquiries-tbody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Tab 6: Backup & Engine -->
+      <section id="pane-backup" class="tab-pane">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <h2>النسخ الاحتياطي وإدارة البيانات المتقدمة</h2>
+            <p>تصدير كافة إعدادات المنشأة والخدمات وملفات الموقع كنسخة احتياطية (JSON) واستعادتها بضغطة زر.</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div style="background: #F8FAFC; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 26px;">
+            <i class="fas fa-file-export" style="font-size: 36px; color: var(--accent); margin-bottom: 14px; display: block;"></i>
+            <h3 style="font-size: 17px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">تصدير نسخة احتياطية فورية</h3>
+            <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 22px;">
+              احفظ ملف بيانات كامل يشمل كافة إعدادات الشركة وكلمات المرور والخدمات المسجلة.
+            </p>
+            <button class="btn btn-action" id="btn-export-json">
+              <i class="fas fa-download"></i>
+              <span>تحميل نسخة احتياطية (.json)</span>
+            </button>
+          </div>
+
+          <div style="background: #F8FAFC; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 26px;">
+            <i class="fas fa-file-import" style="font-size: 36px; color: var(--info); margin-bottom: 14px; display: block;"></i>
+            <h3 style="font-size: 17px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">استعادة نسخة احتياطية</h3>
+            <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 22px;">
+              استورد ملف النسخة الاحتياطية لتحديث أو استعادة كافة إعدادات الموقع فوراً.
+            </p>
+            <input type="file" id="input-import-file" accept=".json" style="display: none;">
+            <button class="btn btn-action" onclick="document.getElementById('input-import-file').click();">
+              <i class="fas fa-upload"></i>
+              <span>اختيار ملف والاستعادة</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Change Password Modal -->
+  <div class="modal-overlay" id="pwd-modal-overlay">
+    <div class="modal-card">
+      <div class="modal-top">
+        <h3 class="modal-title"><i class="fas fa-key" style="color: var(--accent);"></i> تغيير كلمة المرور</h3>
+        <button class="modal-close" onclick="closeModal('pwd-modal-overlay')">&times;</button>
+      </div>
+
+      <div id="pwd-modal-alert" class="alert-banner">
+        <i class="fas fa-info-circle"></i>
+        <span id="pwd-modal-alert-msg"></span>
+      </div>
+
+      <form id="change-pwd-form">
+        <div class="form-group">
+          <label class="form-label" for="input-cur-pwd">كلمة المرور الحالية *</label>
+          <input type="password" id="input-cur-pwd" class="form-input" required placeholder="أدخل كلمة المرور الحالية">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-new-pwd">كلمة المرور الجديدة *</label>
+          <input type="password" id="input-new-pwd" class="form-input" required minlength="4" placeholder="اختر أي كلمة مرور قوية">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-cnf-pwd">تأكيد كلمة المرور الجديدة *</label>
+          <input type="password" id="input-cnf-pwd" class="form-input" required minlength="4" placeholder="أعد إدخال كلمة المرور للتأكيد">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 13px; margin-top: 10px;">
+          <i class="fas fa-check"></i>
+          <span>تأكيد وتحديث كلمة المرور</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Shared Sync Script -->
+  <script src="../js/pervasionsa-sync.js"></script>
+  <script>
+    const AUTH_SESSION_KEY = 'pervasionsa_auth_state_pro';
+
+    function checkAuth() {
+      const isAuth = sessionStorage.getItem(AUTH_SESSION_KEY);
+      if (isAuth === 'true') {
+        document.getElementById('auth-screen').style.display = 'none';
+        loadDashboardData();
+      } else {
+        document.getElementById('auth-screen').style.display = 'flex';
+      }
+    }
+
+    // Toggle Auth Password
+    document.getElementById('toggle-auth-pwd').addEventListener('click', function() {
+      const inp = document.getElementById('login-password');
+      if (inp.type === 'password') {
+        inp.type = 'text';
+        this.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        inp.type = 'password';
+        this.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    });
+
+    // Login Form Submit
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const entered = document.getElementById('login-password').value;
+      const data = PervasionData.get();
+      const currentPwd = data.settings.adminPassword || 'admin';
+
+      if (entered === currentPwd) {
+        sessionStorage.setItem(AUTH_SESSION_KEY, 'true');
+        document.getElementById('login-alert').style.display = 'none';
+        document.getElementById('auth-screen').style.display = 'none';
+        loadDashboardData();
+      } else {
+        document.getElementById('login-alert').style.display = 'flex';
+        document.getElementById('login-password').value = '';
+        document.getElementById('login-password').focus();
+      }
+    });
+
+    // Logout
+    document.getElementById('btn-logout').addEventListener('click', () => {
+      sessionStorage.removeItem(AUTH_SESSION_KEY);
+      window.location.reload();
+    });
+
+    // Tabs
+    document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const targetId = 'pane-' + btn.getAttribute('data-tab');
+        const target = document.getElementById(targetId);
+        if (target) target.classList.add('active');
+      });
+    });
+
+    // Alert Notification
+    function showGlobalAlert(msg, isError = false) {
+      const alert = document.getElementById('global-alert');
+      document.getElementById('global-alert-text').textContent = msg;
+      alert.className = isError ? 'alert-banner error' : 'alert-banner success';
+      alert.style.display = 'flex';
+      setTimeout(() => alert.style.display = 'none', 3500);
+    }
+
+    // Modals
+    function openModal(id) { document.getElementById(id).classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+    document.getElementById('btn-open-pwd-modal').addEventListener('click', () => {
+      document.getElementById('input-cur-pwd').value = '';
+      document.getElementById('input-new-pwd').value = '';
+      document.getElementById('input-cnf-pwd').value = '';
+      document.getElementById('pwd-modal-alert').style.display = 'none';
+      openModal('pwd-modal-overlay');
+    });
+
+    // Change Password Form
+    document.getElementById('change-pwd-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const cur = document.getElementById('input-cur-pwd').value;
+      const n1 = document.getElementById('input-new-pwd').value;
+      const n2 = document.getElementById('input-cnf-pwd').value;
+      const data = PervasionData.get();
+      const currentPwd = data.settings.adminPassword || 'admin';
+      const alertBox = document.getElementById('pwd-modal-alert');
+      const alertMsg = document.getElementById('pwd-modal-alert-msg');
+
+      if (cur !== currentPwd) {
+        alertBox.className = 'alert-banner error';
+        alertMsg.textContent = 'كلمة المرور الحالية غير صحيحة!';
+        alertBox.style.display = 'flex';
+        return;
+      }
+      if (n1.length < 4) {
+        alertBox.className = 'alert-banner error';
+        alertMsg.textContent = 'يجب ألا تقل كلمة المرور عن 4 خانات!';
+        alertBox.style.display = 'flex';
+        return;
+      }
+      if (n1 !== n2) {
+        alertBox.className = 'alert-banner error';
+        alertMsg.textContent = 'كلمتا المرور غير متطابقتين!';
+        alertBox.style.display = 'flex';
+        return;
+      }
+
+      data.settings.adminPassword = n1;
+      PervasionData.save(data);
+
+      alertBox.className = 'alert-banner success';
+      alertMsg.textContent = 'تم تغيير كلمة المرور بنجاح!';
+      alertBox.style.display = 'flex';
+
+      setTimeout(() => {
+        closeModal('pwd-modal-overlay');
+        showGlobalAlert('تم تحديث كلمة مرور الأدمن بنجاح!');
+      }, 1000);
+    });
+
+    // Load Data
+    function loadDashboardData() {
+      const data = PervasionData.get();
+      const s = data.settings;
+
+      // Overview Stats
+      document.getElementById('overview-maint-status').textContent = s.maintenanceMode ? 'مُفعّل' : 'معطّل';
+      document.getElementById('overview-maint-status').style.color = s.maintenanceMode ? '#D97706' : '#059669';
+      document.getElementById('overview-services-num').textContent = data.services.length;
+      document.getElementById('badge-inquiries').textContent = data.inquiries.length;
+
+      // Maintenance Tab
+      document.getElementById('maint-toggle').checked = !!s.maintenanceMode;
+      document.getElementById('maint-title').value = s.maintenanceTitle || '';
+      document.getElementById('maint-msg').value = s.maintenanceMsg || '';
+
+      // Identity Tab
+      document.getElementById('id-name-ar').value = s.siteName || '';
+      document.getElementById('id-name-en').value = s.siteNameEn || '';
+      document.getElementById('id-tagline').value = s.tagline || '';
+      document.getElementById('id-email').value = s.email || '';
+      document.getElementById('id-phone').value = s.phone || '';
+      document.getElementById('id-whatsapp').value = s.whatsapp || '';
+      document.getElementById('id-cr').value = s.crNumber || '';
+      document.getElementById('id-address').value = s.address || '';
+
+      // Render Services
+      renderServicesList(data.services);
+
+      // Render Inquiries
+      renderInquiriesList(data.inquiries);
+    }
+
+    // Save Maintenance
+    document.getElementById('btn-save-maint').addEventListener('click', () => {
+      const data = PervasionData.get();
+      data.settings.maintenanceMode = document.getElementById('maint-toggle').checked;
+      data.settings.maintenanceTitle = document.getElementById('maint-title').value;
+      data.settings.maintenanceMsg = document.getElementById('maint-msg').value;
+
+      PervasionData.save(data);
+      showGlobalAlert('تم حفظ إعدادات صفحة قيد التطوير!');
+      loadDashboardData();
+    });
+
+    // Save Identity
+    document.getElementById('btn-save-identity').addEventListener('click', () => {
+      const data = PervasionData.get();
+      data.settings.siteName = document.getElementById('id-name-ar').value;
+      data.settings.siteNameEn = document.getElementById('id-name-en').value;
+      data.settings.tagline = document.getElementById('id-tagline').value;
+      data.settings.email = document.getElementById('id-email').value;
+      data.settings.phone = document.getElementById('id-phone').value;
+      data.settings.whatsapp = document.getElementById('id-whatsapp').value;
+      data.settings.crNumber = document.getElementById('id-cr').value;
+      data.settings.address = document.getElementById('id-address').value;
+
+      PervasionData.save(data);
+      showGlobalAlert('تم حفظ بيانات وهوية المنشأة بنجاح!');
+    });
+
+    // Render Services
+    function renderServicesList(services) {
+      const container = document.getElementById('services-container-list');
+      if (!services || services.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 30px;">لا توجد خدمات مضافة حالياً.</p>';
+        return;
+      }
+
+      container.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          ${services.map((srv, idx) => `
+            <div style="background: #F8FAFC; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="width: 44px; height: 44px; background: var(--accent-soft); color: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+                  <i class="${srv.icon || 'fas fa-check'}"></i>
+                </div>
+                <div>
+                  <h4 style="font-size: 15.5px; font-weight: 800; color: var(--primary);">${srv.title}</h4>
+                  <p style="font-size: 13px; color: var(--text-muted); margin-top: 3px; max-width: 650px;">${srv.desc}</p>
+                </div>
+              </div>
+              <button class="btn btn-danger" onclick="deleteServiceItem(${idx})" style="padding: 6px 14px; font-size: 12.5px;">
+                <i class="fas fa-trash"></i> حذف
+              </button>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    window.deleteServiceItem = function(index) {
+      if (confirm('هل أنت متأكد من حذف هذه الخدمة؟')) {
+        const data = PervasionData.get();
+        data.services.splice(index, 1);
+        PervasionData.save(data);
+        showGlobalAlert('تم حذف الخدمة بنجاح.');
+        loadDashboardData();
+      }
+    };
+
+    document.getElementById('btn-add-service').addEventListener('click', () => {
+      const title = prompt('أدخل اسم الخدمة أو الحل التقني:');
+      if (!title) return;
+      const desc = prompt('أدخل نبذة مختصرة عن الخدمة:');
+      if (!desc) return;
+
+      const data = PervasionData.get();
+      data.services.push({
+        id: 'srv-' + Date.now(),
+        icon: 'fas fa-cube',
+        title: title,
+        titleEn: title,
+        desc: desc,
+        category: 'tech'
+      });
+      PervasionData.save(data);
+      showGlobalAlert('تمت إضافة الخدمة بنجاح!');
+      loadDashboardData();
+    });
+
+    // Render Inquiries
+    function renderInquiriesList(inquiries) {
+      const tbody = document.getElementById('inquiries-tbody');
+      if (!inquiries || inquiries.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 30px;">لا توجد رسائل واردة حالياً.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = inquiries.map((inq, idx) => `
+        <tr>
+          <td style="font-family: 'Inter'; font-size: 12.5px; white-space: nowrap;">${inq.date || '-'}</td>
+          <td style="font-weight: 700;">${inq.name || '-'}</td>
+          <td><a href="mailto:${inq.email}" style="color: var(--accent); font-weight: 600;">${inq.email || '-'}</a></td>
+          <td dir="ltr" style="text-align: right; font-family: 'Inter';">${inq.phone || '-'}</td>
+          <td><span style="background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px;">${inq.service || '-'}</span></td>
+          <td style="font-size: 13px; max-width: 250px;">${inq.message || '-'}</td>
+          <td>
+            <button class="btn btn-danger" onclick="deleteInquiryRow(${idx})" style="padding: 4px 8px; font-size: 12px;">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    window.deleteInquiryRow = function(index) {
+      if (confirm('حذف هذه الرسالة؟')) {
+        const data = PervasionData.get();
+        data.inquiries.splice(index, 1);
+        PervasionData.save(data);
+        showGlobalAlert('تم حذف الرسالة.');
+        loadDashboardData();
+      }
+    };
+
+    document.getElementById('btn-clear-inquiries').addEventListener('click', () => {
+      if (confirm('تفريغ كافة الرسائل في الصندوق؟')) {
+        const data = PervasionData.get();
+        data.inquiries = [];
+        PervasionData.save(data);
+        showGlobalAlert('تم تفريغ صندوق الرسائل.');
+        loadDashboardData();
+      }
+    });
+
+    // Export JSON
+    document.getElementById('btn-export-json').addEventListener('click', () => {
+      const data = PervasionData.get();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `pervasionsa-backup-${new Date().toISOString().substring(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Import JSON
+    document.getElementById('input-import-file').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const imported = JSON.parse(event.target.result);
+          if (imported.settings) {
+            PervasionData.save(imported);
+            showGlobalAlert('تمت استعادة النسخة الاحتياطية بنجاح!');
+            loadDashboardData();
+          } else {
+            alert('الملف غير متوافق!');
+          }
+        } catch (err) {
+          alert('خطأ في قراءة ملف JSON: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    document.addEventListener('DOMContentLoaded', checkAuth);
+  </script>
+</body>
+</html>
