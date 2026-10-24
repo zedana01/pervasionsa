@@ -1,724 +1,92 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كافيه ومحمصة لوميير | تجربة القهوة المختصة والبرانش الأوروبي - Pervasion SA</title>
-    <meta name="description" content="كافيه ومحمصة لوميير - وجهة عشاق القهوة المختصة والبرانش الأوروبي الفاخر في الرياض. أجواء عصرية، شرفة خارجية، وتحميص يدوي لأجود المحاصيل العالمية.">
-    <link rel="icon" type="image/jpeg" href="images/v60.jpg">
-    <!-- Font Awesome 6.5.1 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-    <!-- Main Style -->
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pervasion SA | الموقع تحت الصيانة</title>
+  <meta name="description" content="Pervasion SA - الموقع تحت الصيانة والتطوير">
+  <link rel="icon" type="image/png" href="images/under-construction.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+    .maintenance-container {
+      width: 100%;
+      max-width: 1100px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .maintenance-img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .admin-access-link {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      font-size: 12px;
+      color: #94a3b8;
+      text-decoration: none;
+      background: rgba(248, 250, 252, 0.9);
+      border: 1px solid #e2e8f0;
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+    .admin-access-link:hover {
+      color: #0f172a;
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+    }
+    @media (max-width: 768px) {
+      .maintenance-container {
+        padding: 12px;
+      }
+      .admin-access-link {
+        bottom: 10px;
+        left: 10px;
+        font-size: 11px;
+        padding: 5px 10px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header class="lumi-header" id="mainHeader">
-        <div class="lumi-container header-inner">
-            <a href="#hero" class="brand-box">
-                <div class="brand-icon">
-                    <i class="fa-solid fa-mug-saucer"></i>
-                </div>
-                <div class="brand-titles">
-                    <span class="brand-name">لوميير كافيه & لاونج</span>
-                    <span class="brand-tagline">LUMIÈRE &bull; ARTISAN ROASTERY</span>
-                </div>
-            </a>
+  <main class="maintenance-container">
+    <img src="images/under-construction.png" alt="Pervasion SA - الموقع تحت الصيانة" class="maintenance-img">
+  </main>
 
-            <nav class="lumi-nav">
-                <a href="#hero" class="nav-link active">الرئيسية</a>
-                <a href="#features" class="nav-link">تجربة لوميير</a>
-                <a href="#menu" class="nav-link">قائمة المشروبات والمأكولات</a>
-                <a href="#terrace" class="nav-link">التراس الخارجي</a>
-                <a href="#reviews" class="nav-link">تقييمات الذواقة</a>
-                <a href="#booking" class="nav-link">حجز طاولة</a>
-            </nav>
+  <a href="admin/" class="admin-access-link" title="لوحة التحكم">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+    </svg>
+    <span>لوحة التحكم (Admin)</span>
+  </a>
 
-            <div class="header-actions">
-                <a href="tel:+966114889900" class="btn-lumi btn-glass" title="اتصل بنا">
-                    <i class="fa-solid fa-phone"></i>
-                </a>
-                <a href="#booking" class="btn-lumi btn-emerald header-cta-desktop">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <span>حجز طاولة سريعة</span>
-                </a>
-                <button class="mobile-hamburger" id="mobileToggle" aria-label="القائمة">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile Navigation Drawer -->
-    <div class="lumi-drawer" id="mobileDrawer">
-        <div>
-            <div class="drawer-top">
-                <div class="brand-titles">
-                    <span class="brand-name">لوميير كافيه</span>
-                    <span class="brand-tagline">RIYADH CAFE & LOUNGE</span>
-                </div>
-                <button class="drawer-close" id="drawerClose"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="drawer-links">
-                <a href="#hero" class="drawer-link">الرئيسية <i class="fa-solid fa-chevron-left"></i></a>
-                <a href="#features" class="drawer-link">تجربة لوميير <i class="fa-solid fa-chevron-left"></i></a>
-                <a href="#menu" class="drawer-link">قائمة الأطعمة والقهوة <i class="fa-solid fa-chevron-left"></i></a>
-                <a href="#terrace" class="drawer-link">التراس والشرفة <i class="fa-solid fa-chevron-left"></i></a>
-                <a href="#reviews" class="drawer-link">آراء الزوار <i class="fa-solid fa-chevron-left"></i></a>
-                <a href="#booking" class="drawer-link">حجز طاولة <i class="fa-solid fa-chevron-left"></i></a>
-            </div>
-        </div>
-        <div>
-            <a href="#booking" class="btn-lumi btn-emerald" style="width: 100%; justify-content: center; margin-bottom: 12px;">
-                <span>احجز طاولتك الآن</span>
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
-            <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted);">
-                <i class="fa-solid fa-phone"></i> +966 11 488 9900
-            </p>
-        </div>
-    </div>
-    <div class="drawer-overlay" id="drawerOverlay"></div>
-
-    <!-- STATIC STUNNING HERO SECTION -->
-    <section class="hero-section" id="hero">
-        <div class="hero-static-bg"></div>
-        <div class="hero-gradient-overlay"></div>
-        <div class="lumi-container">
-            <div class="hero-content">
-                <div class="hero-pill">
-                    <i class="fa-solid fa-sparkles"></i>
-                    <span>محمصة قهوة مختصة & برانش حرفي فاخر</span>
-                </div>
-                <h1 class="hero-title">
-                    حيث تلتقي <span>حرفة القهوة</span> بفخامة الأجواء العصرية
-                </h1>
-                <p class="hero-desc">
-                    استمتع بنكهات البن المختص المقطر بعناية فائقة، مع تشكيلة برانش مخبوزة طازجاً يومياً في تراس ساحر ينبض بالحياة والهدوء في قلب الرياض.
-                </p>
-                <div class="hero-btns">
-                    <a href="#booking" class="btn-lumi btn-emerald">
-                        <i class="fa-solid fa-calendar-days"></i>
-                        <span>احجز طاولتك المفضلة</span>
-                    </a>
-                    <a href="#menu" class="btn-lumi btn-glass">
-                        <i class="fa-solid fa-book-open"></i>
-                        <span>استكشف قائمة الطعام والقهوة</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Floating Live Booking Strip -->
-    <section class="booking-strip-section" id="booking">
-        <div class="lumi-container">
-            <div class="booking-strip-card">
-                <div class="strip-header">
-                    <div class="strip-title">
-                        <i class="fa-solid fa-bolt-lightning"></i>
-                        <span>حجز فوري لطاولتك في لوميير (تأكيد لحظي)</span>
-                    </div>
-                    <div class="strip-note">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        <span>دون أي رسوم حجز مسبقة أو انتظار</span>
-                    </div>
-                </div>
-
-                <form id="lumiBookingForm" class="booking-grid" onsubmit="handleBookingSubmit(event)">
-                    <div class="input-group">
-                        <label class="input-label"><i class="fa-solid fa-users"></i> عدد الضيوف</label>
-                        <select class="lumi-input" id="bookGuests" required>
-                            <option value="شخصان (طاولة ثنائية)">شخصان (طاولة ثنائية)</option>
-                            <option value="3 - 4 أشخاص (جلسة عائلية)">3 - 4 أشخاص (جلسة عائلية)</option>
-                            <option value="5 - 8 أشخاص (جلسة أصدقاء)">5 - 8 أشخاص (جلسة أصدقاء)</option>
-                            <option value="طاولة عمل واجتماعات فردية">طاولة عمل واجتماعات فردية</option>
-                            <option value="طاولة VIP في التراس">طاولة VIP في التراس (+8)</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label"><i class="fa-solid fa-calendar"></i> تاريخ الزيارة</label>
-                        <input type="date" class="lumi-input" id="bookDate" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label"><i class="fa-solid fa-clock"></i> وقت الزيارة والمجلس</label>
-                        <select class="lumi-input" id="bookTime" required>
-                            <option value="البرانش الصباحي (8:30 ص - 12:00 م)">البرانش الصباحي (8:30 ص - 12:00 م)</option>
-                            <option value="فترة الظهيرة والقهوة (1:00 م - 5:00 م)">فترة الظهيرة والقهوة (1:00 م - 5:00 م)</option>
-                            <option value="فترة المساء الذهبية (6:00 م - 9:00 م)">فترة المساء الذهبية (6:00 م - 9:00 م)</option>
-                            <option value="السهرة الليلية (9:30 م - 1:30 ص)">السهرة الليلية (9:30 م - 1:30 ص)</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label"><i class="fa-solid fa-couch"></i> تفضيل الجلسة</label>
-                        <select class="lumi-input" id="bookLocation" required>
-                            <option value="تراس الحديقة المفتوح">تراس الحديقة المفتوح (جلسات خارجية)</option>
-                            <option value="الصالة الداخلية الفاخرة">الصالة الداخلية الفاخرة (لاونج مكيف)</option>
-                            <option value="ركن باريستا القهوة التفاعلي">ركن باريستا القهوة التفاعلي</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <button type="submit" class="btn-lumi btn-emerald" style="width: 100%; height: 48px; justify-content: center;">
-                            <span>تأكيد الحجز الآن</span>
-                            <i class="fa-solid fa-check"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Pillars Section -->
-    <section class="features-section" id="features">
-        <div class="lumi-container">
-            <div class="section-header">
-                <span class="section-tag"><i class="fa-solid fa-gem"></i> تميز لوميير الفريد</span>
-                <h2 class="section-title">تجربة استثنائية لكل حواسك في عالم القهوة والضيافة</h2>
-                <p class="section-sub">صممنا كل زاوية لتمنحك الراحة والإلهام، سواء كنت تبحث عن فنجان إسبريسو غني لبدء يومك، أو جلسة هادئة تجمعك مع من تحب.</p>
-            </div>
-
-            <div class="features-grid">
-                <!-- Feature 1 -->
-                <div class="feature-card">
-                    <div class="feature-icon-wrap">
-                        <i class="fa-solid fa-seedling"></i>
-                    </div>
-                    <h3 class="feature-card-title">محاصيل ببن مختص 100%</h3>
-                    <p class="feature-card-desc">
-                        نستورد أجود أنواع البن الأخضر من مزارع إثيوبيا وكولومبيا واليمن، مع تحميص دقيق أسبوعياً يبرز النوتات العطرية والفاكهية دون أي مرارة.
-                    </p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="feature-card">
-                    <div class="feature-icon-wrap">
-                        <i class="fa-solid fa-bread-slice"></i>
-                    </div>
-                    <h3 class="feature-card-title">مخبوزات طازجة يومياً</h3>
-                    <p class="feature-card-desc">
-                        مخبزنا الحرفي يبدأ عمله قبل شروق الشمس لإعداد الكرواسون المقرمش بالزبدة الفرنسية الفاخرة، وحلويات التيراميسو الكلاسيكية وكعك السان سباستيان.
-                    </p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="feature-card">
-                    <div class="feature-icon-wrap">
-                        <i class="fa-solid fa-laptop-code"></i>
-                    </div>
-                    <h3 class="feature-card-title">بيئة عمل وإنتاجية ملهمة</h3>
-                    <p class="feature-card-desc">
-                        توفير إنترنت فائق السرعة عبر الألياف الضوئية، مخارج شحن وطاولات مريحة بإضاءة طبيعية مصممة خصيصاً لرواد الأعمال والمبدعين أثناء ساعات الصباح.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- REDESIGNED TERRACE SECTION (SPLIT 50/50 MODERN LUXURY) -->
-    <section class="terrace-section" id="terrace">
-        <div class="lumi-container">
-            <div class="terrace-split-card">
-                <!-- Content Side -->
-                <div class="terrace-content-side">
-                    <span class="terrace-badge-modern">
-                        <i class="fa-solid fa-cloud-sun"></i> الأجواء الخارجية واللاونج
-                    </span>
-                    <h2 class="terrace-main-heading">
-                        شرفة لوميير المفتوحة.. <span>وجهتك للهدوء في قلب العاصمة</span>
-                    </h2>
-                    <p class="terrace-p">
-                        استمتع بتراس خارجي فسيح ومصمم بنظام الحديقة المعاصرة مع أشجار زينة طبيعية، مجهز بأحدث أنظمة تبريد وتلطيف الرذاذ لصيف ممتع، ومدافئ لهب أوروبية أنيقة لشتاء دافئ.
-                    </p>
-
-                    <div class="terrace-perks-grid">
-                        <div class="perk-item">
-                            <div class="perk-icon-circle"><i class="fa-solid fa-snowflake"></i></div>
-                            <div class="perk-text">
-                                <strong>تلطيف ضبابي متكامل</strong>
-                                <span>أجواء معتدلة ومنعشة طوال أشهر الصيف</span>
-                            </div>
-                        </div>
-
-                        <div class="perk-item">
-                            <div class="perk-icon-circle"><i class="fa-solid fa-music"></i></div>
-                            <div class="perk-text">
-                                <strong>صوتيات محيطية هادئة</strong>
-                                <span>نغمات جاز وموسيقى لاونج كلاسيكية مريحة</span>
-                            </div>
-                        </div>
-
-                        <div class="perk-item">
-                            <div class="perk-icon-circle"><i class="fa-solid fa-wifi"></i></div>
-                            <div class="perk-text">
-                                <strong>تغطية Wi-Fi 6 فائقة</strong>
-                                <span>إنترنت سريع ومستقر للعمل والاسترخاء</span>
-                            </div>
-                        </div>
-
-                        <div class="perk-item">
-                            <div class="perk-icon-circle"><i class="fa-solid fa-shield-heart"></i></div>
-                            <div class="perk-text">
-                                <strong>جلسات عائلية وخاصة</strong>
-                                <span>خصوصية تامة ومساحات متباعدة براحة تامة</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="#booking" class="btn-lumi btn-emerald">
-                        <i class="fa-solid fa-chair"></i>
-                        <span>حجز جلسة في التراس الخارجي</span>
-                    </a>
-                </div>
-
-                <!-- Visual Side -->
-                <div class="terrace-visual-side">
-                    <img decoding="async" src="images/terrace.jpg" alt="تراس كافيه لوميير الرياض" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                    <div class="visual-overlay-soft"></div>
-                    <div class="visual-floating-badge">
-                        <i class="fa-solid fa-star floating-badge-icon"></i>
-                        <div class="floating-badge-info">
-                            <strong>الأعلى تقييماً في الرياض</strong>
-                            <span>أكثر من 2,400 زيارة وتجربة موثقة</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Menu Section -->
-    <section class="menu-section" id="menu">
-        <div class="lumi-container">
-            <div class="section-header">
-                <span class="section-tag"><i class="fa-solid fa-mug-hot"></i> قائمة التذوق الحصرية</span>
-                <h2 class="section-title">مختارات الشيف وباريستا لوميير</h2>
-                <p class="section-sub">قائمة تجمع بين فنون إعداد القهوة المقطرة بأحدث الأدوات وألذ أطباق البرانش الخفيفة والمبتكرة.</p>
-            </div>
-
-            <!-- Menu Category Filter Tabs -->
-            <div class="menu-tabs-bar">
-                <button class="menu-tab-pill active" onclick="filterMenu('all', this)">
-                    <i class="fa-solid fa-border-all"></i> الكل
-                </button>
-                <button class="menu-tab-pill" onclick="filterMenu('coffee', this)">
-                    <i class="fa-solid fa-mug-saucer"></i> القهوة المختصة
-                </button>
-                <button class="menu-tab-pill" onclick="filterMenu('brunch', this)">
-                    <i class="fa-solid fa-utensils"></i> البرانش والفطور
-                </button>
-                <button class="menu-tab-pill" onclick="filterMenu('sweets', this)">
-                    <i class="fa-solid fa-cake-candles"></i> الحلى والمخبوزات
-                </button>
-                <button class="menu-tab-pill" onclick="filterMenu('drinks', this)">
-                    <i class="fa-solid fa-glass-water"></i> موكتيلات ومشروبات باردة
-                </button>
-            </div>
-
-            <!-- Menu Items Grid -->
-            <div class="menu-grid" id="menuItemsGrid">
-
-                <!-- Item 1: Special Coffee -->
-                <div class="menu-item-card" data-category="coffee">
-                    <div class="item-thumb-box">
-                        <img decoding="async" src="images/v60.jpg" alt="V60 إثيوبيا قوجي" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                    </div>
-                    <div class="item-details">
-                        <div class="item-title-row">
-                            <span class="item-name">V60 مقطرة - إثيوبيا قوجي</span>
-                            <span class="item-badge-popular">الأكثر طلباً</span>
-                            <span class="item-dots"></span>
-                            <span class="item-price">28 <small>ريال</small></span>
-                        </div>
-                        <p class="item-desc">محصول فاخر بإيحاءات الياسمين والخوخ والعسل، تحضير يدوي متوازن مع ثلج نقي أو دافئ.</p>
-                        <div class="item-tags">
-                            <span class="item-tag">Single Origin</span>
-                            <span class="item-tag">مقطرة يدوياً</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 2: Special Coffee -->
-                <div class="menu-item-card" data-category="coffee">
-                    <div class="item-thumb-box">
-                        <img decoding="async" src="images/flatwhite.jpg" alt="فلات وايت لوميير" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                    </div>
-                    <div class="item-details">
-                        <div class="item-title-row">
-                            <span class="item-name">فلات وايت لوميير الحرفي</span>
-                            <span class="item-dots"></span>
-                            <span class="item-price">22 <small>ريال</small></span>
-                        </div>
-                        <p class="item-desc">دبل شوت إسبريسو كولومبي مع حليب متبخر برغوة مخملية دقيقة ورسم لاتيه آرت احترافي.</p>
-                        <div class="item-tags">
-                            <span class="item-tag">Latte Art</span>
-                            <span class="item-tag">قوام مخملي</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 3: Brunch -->
-                <div class="menu-item-card" data-category="brunch">
-                    <div class="item-thumb-box">
-                        <img decoding="async" src="images/benedict.jpg" alt="بيض بينيديكت الكمأة" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                    </div>
-                    <div class="item-details">
-                        <div class="item-title-row">
-                            <span class="item-name">بيض بينيديكت الكمأة والساوردو</span>
-                            <span class="item-badge-popular">توقيع الشيف</span>
-                            <span class="item-dots"></span>
-                            <span class="item-price">48 <small>ريال</small></span>
-                        </div>
-                        <p class="item-desc">بيض عضوي مسلوق بمهارة، صلصة هولنديز بزيت الكمأة الأسود، فوق شريحة خبز ساوردو مخبوز بالحطب.</p>
-                        <div class="item-tags">
-                            <span class="item-tag">برانش راقي</span>
-                            <span class="item-tag">Organic</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 4: Brunch -->
-                <div class="menu-item-card" data-category="brunch">
-                    <div class="item-thumb-box">
-                        <img decoding="async" src="images/avocado.jpg" alt="توست الأفوكادو والفيتا" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                    </div>
-                    <div class="item-details">
-                        <div class="item-title-row">
-                            <span class="item-name">توست الأفوكادو والفيتا المتبلة</span>
-                            <span class="item-dots"></span>
-                            <span class="item-price">42 <small>ريال</small></span>
-                        </div>
-                        <p class="item-desc">هريس أفوكادو طازج مع حبوب الرمان وجبن فيتا يوناني مع بذور الشيا ودبس الرمان العضوي.</p>
-                        <div class="item-tags">
-                            <span class="item-tag">صحي ونباتي</span>
-                            <span class="item-tag">طازج</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 5: Sweets -->
-                <div class="menu-item-card" data-category="sweets">
-                    <div class="item-thumb-box">
-                        <img decoding="async" src="images/tiramisu.jpg" alt="تيراميسو لوميير الكلاسيكي" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                    </div>
-                    <div class="item-details">
-                        <div class="item-title-row">
-                            <span class="item-name">تيراميسو لوميير الإيطالي</span>
-                            <span class="item-badge-popular">موصى به</span>
-                            <span class="item-dots"></span>
-                            <span class="item-price">36 <small>ريال</small></span>
-                        </div>
-                        <p class="item-desc">بسكويت ليدي فينجر مغموس بإسبريسو لوميير المركز مع كريمة مسكربون طازجة وغبار الكاكاو الخام.</p>
-                        <div class="item-tags">
-                            <span class="item-tag">حلى إيطالي</span>
-                            <span class="item-tag">بدون كحول</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 6: Sweets -->
-                <div class="menu-item-card" data-category="sweets">
-                    <div class="item-thumb-box">
-                        <img decoding="async" src="images/croissant.jpg" alt="كرواسون اللوز البلجيكي" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                    </div>
-                    <div class="item-details">
-                        <div class="item-title-row">
-                            <span class="item-name">كرواسون اللوز البلجيكي</span>
-                            <span class="item-dots"></span>
-                            <span class="item-price">24 <small>ريال</small></span>
-                        </div>
-                        <p class="item-desc">كرواسون زبدة فرنسي محشو بكريمة اللوز الغنية ومغطى برقائق اللوز المحمصة وسكر ناعم.</p>
-                        <div class="item-tags">
-                            <span class="item-tag">مخبوز طازج</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 7: Drinks -->
-                <div class="menu-item-card" data-category="drinks">
-                    <div class="item-thumb-box">
-                        <img decoding="async" src="images/mojito.jpg" alt="باشن فروت موخيتو لوميير" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                    </div>
-                    <div class="item-details">
-                        <div class="item-title-row">
-                            <span class="item-name">باشن فروت & ريحان موكتيل</span>
-                            <span class="item-badge-popular">منعش</span>
-                            <span class="item-dots"></span>
-                            <span class="item-price">29 <small>ريال</small></span>
-                        </div>
-                        <p class="item-desc">لب الباشن فروت الطبيعي مع أوراق الريحان المنعشة والمياه الفوارة وقطع الليمون الأخضر.</p>
-                        <div class="item-tags">
-                            <span class="item-tag">طبيعي 100%</span>
-                            <span class="item-tag">Ice Cold</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 8: Drinks -->
-                <div class="menu-item-card" data-category="drinks">
-                    <div class="item-thumb-box">
-                        <img decoding="async" src="images/matcha.jpg" alt="ماتشا لاتيه عضوي" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                    </div>
-                    <div class="item-details">
-                        <div class="item-title-row">
-                            <span class="item-name">سيريمونيال ماتشا لاتيه (اليابان)</span>
-                            <span class="item-dots"></span>
-                            <span class="item-price">32 <small>ريال</small></span>
-                        </div>
-                        <p class="item-desc">بودرة ماتشا يابانية فاخرة درجة أولى مخفوقة يدوياً مع حليب الشوفان ومحلاة بعسل الزهور.</p>
-                        <div class="item-tags">
-                            <span class="item-tag">Matcha Uji</span>
-                            <span class="item-tag">Oat Milk</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Customer Reviews / High Society Vibes -->
-    <section class="vibes-section" id="reviews">
-        <div class="lumi-container">
-            <div class="section-header">
-                <span class="section-tag"><i class="fa-solid fa-star"></i> تجارب وشهادات ضيوفنا</span>
-                <h2 class="section-title">ماذا يقول رواد لوميير في الرياض؟</h2>
-                <p class="section-sub">أكثر من 2,400 تقييم 5 نجوم على خرائط جوجل، واختيار النقاد كأفضل وجهة برانش وقهوة مختصة لعام 2026.</p>
-            </div>
-
-            <div class="vibes-grid">
-                <!-- Review 1 -->
-                <div class="vibe-card">
-                    <div class="stars-row">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="vibe-quote">
-                        "من أروع الكافيهات التي زرتها في الرياض. الفلات وايت مضبوط بالمللي، وبيض البينيديكت بالكمأة خيالي. الجلسات الخارجية تشرح الصدر والخدمة سريعة وراقية جداً."
-                    </p>
-                    <div class="reviewer-info">
-                        <img decoding="async" src="images/avatar1.jpg" alt="نوف القحطاني" class="reviewer-avatar" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                        <div>
-                            <div class="reviewer-name">نوف القحطاني</div>
-                            <div class="reviewer-meta">ناقدة طعام ومصممة ديكور &bull; الرياض</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="vibe-card">
-                    <div class="stars-row">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="vibe-quote">
-                        "مكان مثالي لإنجاز العمل الصباحي وعقد اجتماعات سريعة. الإنترنت سريع والقهوة المقطرة V60 إثيوبيا من أفضل ما تذوقت. أنصح به بشدة لكل باحث عن الهدوء والتميز."
-                    </p>
-                    <div class="reviewer-info">
-                        <img decoding="async" src="images/avatar2.jpg" alt="م. فيصل الدوسري" class="reviewer-avatar" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                        <div>
-                            <div class="reviewer-name">م. فيصل الدوسري</div>
-                            <div class="reviewer-meta">رائد أعمال ومؤسس تقني &bull; الرياض</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="vibe-card">
-                    <div class="stars-row">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="vibe-quote">
-                        "الأجواء في المساء خرافية، الإضاءة خافتة والموسيقى مناسبة تماماً دون صخب. التيراميسو لا يُعلى عليه. سأكرر الزيارة أسبوعياً بلا شك!"
-                    </p>
-                    <div class="reviewer-info">
-                        <img decoding="async" src="images/avatar3.jpg" alt="سارة الشهري" class="reviewer-avatar" title="كافيه ومحمصة لوميير | نموذج تصميم موقع كافيه ومقهى مختص">
-                        <div>
-                            <div class="reviewer-name">سارة الشهري</div>
-                            <div class="reviewer-meta">مرشدة نمط حياة وضيافة</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="lumi-footer" id="contact">
-        <div class="lumi-container">
-            <div class="footer-grid">
-                <div>
-                    <a href="#hero" class="brand-box">
-                        <div class="brand-icon">
-                            <i class="fa-solid fa-mug-saucer"></i>
-                        </div>
-                        <div class="brand-titles">
-                            <span class="brand-name">لوميير كافيه & لاونج</span>
-                            <span class="brand-tagline">LUMIÈRE &bull; ARTISAN ROASTERY</span>
-                        </div>
-                    </a>
-                    <p class="footer-brand-desc">
-                        وجهة عشاق القهوة المختصة والبرانش الأوروبي في الرياض. تجربة استثنائية تمزج بين حرفة التحميص الدقيقة وفخامة الضيافة السعودية المعاصرة.
-                    </p>
-                    <div class="footer-socials">
-                        <a href="https://instagram.com" target="_blank" class="social-link" title="إنستغرام" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://twitter.com" target="_blank" class="social-link" title="إكس (تويتر)" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://tiktok.com" target="_blank" class="social-link" title="تيك توك" rel="noopener"><i class="fa-brands fa-tiktok"></i></a>
-                        <a href="https://wa.me/966114889900" target="_blank" class="social-link" title="واتساب" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="footer-col-title">روابط سريعة</h4>
-                    <ul class="footer-links-list">
-                        <li><a href="#hero">الرئيسية</a></li>
-                        <li><a href="#features">عن لوميير</a></li>
-                        <li><a href="#menu">قائمة الطعام والقهوة</a></li>
-                        <li><a href="#terrace">التراس الخارجي</a></li>
-                        <li><a href="#booking">حجز طاولة</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="footer-col-title">أوقات العمل</h4>
-                    <ul class="footer-links-list">
-                        <li style="color: var(--text-secondary); font-size: 0.9rem;">
-                            <strong style="color: #FFF; display: block;">الفترة الصباحية والبرانش:</strong>
-                            7:00 ص – 4:00 عصراً
-                        </li>
-                        <li style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 10px;">
-                            <strong style="color: #FFF; display: block;">الفترة المسائية واللاونج:</strong>
-                            4:30 م – 2:00 بعد منتصف الليل
-                        </li>
-                        <li style="color: var(--emerald-accent); font-size: 0.85rem; margin-top: 10px;">
-                            <i class="fa-solid fa-check"></i> مفتوح يومياً طوال الأسبوع
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="footer-col-title">الموقع والاتصال</h4>
-                    <ul class="footer-links-list">
-                        <li style="color: var(--text-secondary); font-size: 0.9rem;">
-                            <i class="fa-solid fa-location-dot" style="color: var(--emerald-accent); margin-left: 6px;"></i>
-                            طريق الأمير سلطان بن عبدالعزيز، السليمانية، الرياض 12243
-                        </li>
-                        <li style="color: var(--text-secondary); font-size: 0.9rem;">
-                            <i class="fa-solid fa-phone" style="color: var(--emerald-accent); margin-left: 6px;"></i>
-                            +966 11 488 9900
-                        </li>
-                        <li style="color: var(--text-secondary); font-size: 0.9rem;">
-                            <i class="fa-solid fa-envelope" style="color: var(--emerald-accent); margin-left: 6px;"></i>
-                            welcome@lumierecafe.sa
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom-bar">
-                <div>
-                    &copy; 2026 جميع الحقوق محفوظة لمنصة <strong>انتج سايتس (Entejsites)</strong> &bull; نموذج عرض كافيه ومطعم راقي 4.
-                </div>
-                <div>
-                    تصميم مبني بأكواد نقية وسريعة بنظام Elementor Canvas لسرعة تحميل فائقة.
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-    <!-- Booking Confirmation Popup Modal -->
-    <div class="modal-overlay" id="bookingModal">
-        <div class="modal-card">
-            <button class="modal-close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
-            <div class="modal-icon-glow">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <h3 class="modal-title">تم تسجيل طلب الحجز بنجاح!</h3>
-            <p class="modal-subtitle">يسعدنا استقبالك في كافيه ومطعم لوميير، تفاصيل طلبك موضحة أدناه:</p>
-
-            <div class="modal-summary-box">
-                <div class="summary-row">
-                    <span>عدد الضيوف:</span>
-                    <strong id="modalGuests">2</strong>
-                </div>
-                <div class="summary-row">
-                    <span>تاريخ الزيارة:</span>
-                    <strong id="modalDate">اليوم</strong>
-                </div>
-                <div class="summary-row">
-                    <span>فترة وموعد الزيارة:</span>
-                    <strong id="modalTime">المساء</strong>
-                </div>
-                <div class="summary-row">
-                    <span>مكان الطاولة:</span>
-                    <strong id="modalLocation">التراس الخارجي</strong>
-                </div>
-                <div class="summary-row" style="color: var(--emerald-accent); border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 8px;">
-                    <span>حالة الطلب:</span>
-                    <strong>مؤكد ومحجوز باسمك</strong>
-                </div>
-            </div>
-
-            <div class="modal-cta-buttons">
-                <a href="#" id="modalWhatsAppBtn" target="_blank" class="btn-lumi btn-emerald" style="justify-content: center;">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i>
-                    <span>إرسال تفاصيل الحجز للمطعم عبر واتساب</span>
-                </a>
-                <button type="button" onclick="closeModal()" class="btn-lumi btn-glass" style="justify-content: center;">
-                    <span>إغلاق النافذة والعودة للموقع</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile Navigation Drawer -->
-    <div class="lumi-drawer-overlay" id="drawerOverlay"></div>
-    <div class="lumi-drawer" id="mobileDrawer">
-        <div>
-            <div class="drawer-top">
-                <div class="brand-titles">
-                    <span class="brand-name">لوميير كافيه & لاونج</span>
-                    <span class="brand-tagline">LUMIÈRE &bull; ARTISAN ROASTERY</span>
-                </div>
-                <button class="drawer-close" id="drawerClose"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="drawer-links">
-                <a href="#hero" class="drawer-link">الرئيسية <i class="fa-solid fa-chevron-left"></i></a>
-                <a href="#features" class="drawer-link">تجربة لوميير <i class="fa-solid fa-chevron-left"></i></a>
-                <a href="#menu" class="drawer-link">قائمة الأطعمة والقهوة <i class="fa-solid fa-chevron-left"></i></a>
-                <a href="#terrace" class="drawer-link">التراس والشرفة <i class="fa-solid fa-chevron-left"></i></a>
-                <a href="#reviews" class="drawer-link">آراء الزوار <i class="fa-solid fa-chevron-left"></i></a>
-                <a href="#booking" class="drawer-link">حجز طاولة <i class="fa-solid fa-chevron-left"></i></a>
-            </div>
-        </div>
-        <div class="drawer-bottom">
-            <a href="tel:+966114889900" class="btn-lumi btn-emerald" style="justify-content: center; width: 100%;">
-                <i class="fa-solid fa-phone"></i>
-                <span>اتصل بنا مباشرة</span>
-            </a>
-            <div style="text-align: center; margin-top: 15px;">
-                <a href="admin/" style="color: var(--text-muted); font-size: 12px; text-decoration: none;">
-                    <i class="fa-solid fa-lock"></i> لوحة التحكم
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Discreet Admin Float Pill -->
-    <a href="admin/" class="admin-float-pill" title="لوحة تحكم الموقع">
-        <i class="fa-solid fa-gear"></i>
-        <span>لوحة التحكم</span>
-    </a>
-
-
-    <!-- Interactive Scripts -->
-    <script src="js/lumiere-sync.js"></script>
-    <script src="js/app.js"></script>
 </body>
 </html>

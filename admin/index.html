@@ -3,30 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>لوحة التحكم الاحترافية | لوميير كافيه & لاونج - LUMIÈRE CMS</title>
-  <link rel="icon" type="image/jpeg" href="../images/v60.jpg">
+  <title>لوحة تحكم Pervasion SA</title>
+  <link rel="icon" type="image/png" href="../images/under-construction.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0B0F12;
-      --bg-card: #12181D;
-      --bg-card-hover: #1A222A;
-      --emerald: #00D287;
-      --emerald-soft: rgba(0, 210, 135, 0.12);
-      --caramel: #E5A967;
-      --caramel-soft: rgba(229, 169, 103, 0.15);
-      --text: #F8FAFC;
-      --text-muted: #94A3B8;
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --primary-soft: rgba(59, 130, 246, 0.15);
+      --success: #10b981;
+      --success-soft: rgba(16, 185, 129, 0.15);
+      --danger: #ef4444;
+      --danger-soft: rgba(239, 68, 68, 0.15);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
       --border: rgba(255, 255, 255, 0.08);
-      --border-emerald: rgba(0, 210, 135, 0.35);
-      --danger: #EF4444;
-      --danger-soft: rgba(239, 68, 68, 0.12);
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
-      --shadow-sm: 0 4px 12px rgba(0,0,0,0.3);
-      --transition: all 0.22s ease;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,7 +40,7 @@
     #authOverlay {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, #12181D 0%, #0B0F12 100%);
+      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -51,139 +48,62 @@
       padding: 20px;
     }
     .auth-card {
-      background: #12181D;
-      border: 1px solid var(--border-emerald);
+      background: #1e293b;
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 40px 32px;
       width: 100%;
       max-width: 420px;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 20px rgba(0, 210, 135, 0.15);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
     }
     .auth-icon {
-      width: 56px;
-      height: 56px;
+      width: 60px;
+      height: 60px;
       border-radius: 14px;
-      background: var(--emerald-soft);
-      border: 1px solid var(--border-emerald);
-      color: var(--emerald);
-      font-size: 24px;
+      background: var(--primary-soft);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--primary);
+      font-size: 26px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
-    .auth-title { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
-    .auth-subtitle { font-size: 13.5px; color: var(--text-muted); margin-bottom: 24px; }
+    .auth-title { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+    .auth-subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 22px; }
     .auth-input {
       width: 100%;
-      padding: 13px 16px;
-      background: rgba(255,255,255,0.04);
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       color: #fff;
       font-size: 15px;
       font-family: inherit;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       text-align: center;
       letter-spacing: 2px;
     }
     .auth-input:focus {
       outline: none;
-      border-color: var(--emerald);
-      box-shadow: 0 0 0 3px var(--emerald-soft);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-soft);
     }
     .auth-error {
       color: var(--danger);
+      background: var(--danger-soft);
+      padding: 8px 12px;
+      border-radius: 6px;
       font-size: 13px;
       margin-bottom: 14px;
       display: none;
     }
 
-    /* Layout */
-    .admin-layout {
-      display: flex;
-      min-height: 100vh;
-    }
-    .admin-sidebar {
-      width: 270px;
-      background: #0E1317;
-      border-left: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 0;
-    }
-    .sidebar-header {
-      padding: 24px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .brand-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--emerald-soft);
-      border: 1px solid var(--border-emerald);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--emerald);
-      font-size: 18px;
-    }
-    .brand-title-box h2 { font-size: 16px; font-weight: 800; color: #fff; }
-    .brand-title-box span { font-size: 11px; color: var(--emerald); letter-spacing: 1px; font-family: 'Plus Jakarta Sans'; }
-
-    .sidebar-nav {
-      padding: 20px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      flex: 1;
-    }
-    .nav-btn {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      text-align: right;
-      width: 100%;
-      transition: var(--transition);
-    }
-    .nav-btn i { font-size: 16px; width: 22px; text-align: center; }
-    .nav-btn:hover { background: rgba(255,255,255,0.03); color: #fff; }
-    .nav-btn.active {
-      background: var(--emerald);
-      color: #032015;
-      box-shadow: 0 4px 15px rgba(0, 210, 135, 0.3);
-    }
-    .nav-btn.active i { color: #032015; }
-
-    .sidebar-footer {
-      padding: 18px 16px;
-      border-top: 1px solid var(--border);
-    }
-
-    /* Main Area */
-    .admin-main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: var(--bg-dark);
-      overflow-y: auto;
-    }
+    /* Top Bar */
     .top-header {
-      height: 72px;
-      background: #0E1317;
+      height: 70px;
+      background: #111827;
       border-bottom: 1px solid var(--border);
       padding: 0 28px;
       display: flex;
@@ -193,15 +113,37 @@
       top: 0;
       z-index: 100;
     }
-    .header-actions {
+    .brand-group {
       display: flex;
       align-items: center;
       gap: 12px;
     }
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--primary-soft);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 17px;
+    }
+    .brand-text h2 { font-size: 16px; font-weight: 800; color: #fff; }
+    .brand-text span { font-size: 11px; color: var(--text-muted); }
 
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       padding: 9px 16px;
       border-radius: var(--radius-sm);
@@ -211,165 +153,69 @@
       cursor: pointer;
       border: none;
       text-decoration: none;
-      transition: var(--transition);
+      transition: all 0.2s ease;
     }
-    .btn-emerald {
-      background: var(--emerald);
-      color: #032015;
-    }
-    .btn-emerald:hover {
-      background: #00ea96;
-      box-shadow: 0 4px 14px rgba(0, 210, 135, 0.4);
-    }
-    .btn-glass {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
-    .btn-glass:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255,255,255,0.2);
-    }
-    .btn-danger {
-      background: var(--danger-soft);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: var(--danger);
-    }
-    .btn-danger:hover {
-      background: var(--danger);
-      color: #fff;
-    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-glass { background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border); color: var(--text); }
+    .btn-glass:hover { background: rgba(255, 255, 255, 0.12); }
+    .btn-danger { background: var(--danger-soft); border: 1px solid rgba(239, 68, 68, 0.3); color: var(--danger); }
+    .btn-danger:hover { background: var(--danger); color: #fff; }
 
-    /* Content Area */
-    .content-container {
-      padding: 28px;
-      max-width: 1200px;
-      width: 100%;
+    /* Container */
+    .main-wrap {
+      max-width: 1000px;
       margin: 0 auto;
+      padding: 30px 20px;
     }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
 
-    /* Card Panels */
-    .card-panel {
+    .card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 24px;
       margin-bottom: 24px;
     }
-    .panel-title {
-      font-size: 18px;
+    .card-title {
+      font-size: 17px;
       font-weight: 800;
-      margin-bottom: 18px;
+      color: #fff;
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #fff;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
     }
-    .panel-title i { color: var(--emerald); font-size: 18px; }
+    .card-title i { color: var(--primary); }
 
-    /* Stat Cards */
-    .stats-grid {
+    .info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-bottom: 24px;
-    }
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      display: flex;
-      align-items: center;
       gap: 16px;
+      margin-bottom: 20px;
     }
-    .stat-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: var(--emerald-soft);
-      border: 1px solid var(--border-emerald);
-      color: var(--emerald);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-    }
-    .stat-val { font-size: 24px; font-weight: 900; color: #fff; }
-    .stat-lbl { font-size: 12.5px; color: var(--text-muted); }
-
-    /* Forms */
-    .form-group {
-      margin-bottom: 18px;
-    }
-    .form-label {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 7px;
-      color: var(--text-muted);
-    }
-    .form-control {
-      width: 100%;
-      padding: 11px 14px;
+    .info-box {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      color: #fff;
-      font-family: inherit;
-      font-size: 14px;
-      transition: var(--transition);
+      padding: 16px;
     }
-    .form-control:focus {
-      outline: none;
-      border-color: var(--emerald);
-      box-shadow: 0 0 0 3px var(--emerald-soft);
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+    .info-lbl { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+    .info-val { font-size: 15px; font-weight: 700; color: #fff; }
 
-    /* Menu Items Table */
-    .menu-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 12px;
-    }
-    .menu-table th {
-      text-align: right;
-      padding: 12px 14px;
-      font-size: 13px;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
-      font-weight: 700;
-    }
-    .menu-table td {
-      padding: 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      font-size: 13.5px;
-      vertical-align: middle;
-    }
-    .menu-table tr:hover td {
-      background: rgba(255, 255, 255, 0.02);
-    }
-    .item-img-thumb {
-      width: 44px;
-      height: 44px;
-      border-radius: 8px;
-      object-fit: cover;
+    .preview-box {
+      background: #000;
       border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      text-align: center;
+      margin-top: 14px;
     }
-    .badge-tag {
-      background: var(--caramel-soft);
-      color: var(--caramel);
-      padding: 3px 8px;
+    .preview-box img {
+      max-width: 100%;
+      max-height: 260px;
       border-radius: 4px;
-      font-size: 11px;
-      font-weight: 700;
     }
 
     /* Modal */
@@ -386,13 +232,13 @@
     }
     .modal-backdrop.open { display: flex; }
     .modal-box {
-      background: #141A20;
+      background: #1e293b;
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 28px;
       width: 100%;
-      max-width: 520px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      max-width: 440px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.7);
     }
     .modal-header {
       display: flex;
@@ -400,15 +246,31 @@
       justify-content: space-between;
       margin-bottom: 20px;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 14px;
+      padding-bottom: 12px;
     }
-    .modal-title { font-size: 18px; font-weight: 800; color: #fff; }
-    .modal-close {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 18px;
-      cursor: pointer;
+    .modal-title { font-size: 17px; font-weight: 800; color: #fff; }
+    .modal-close { background: transparent; border: none; color: var(--text-muted); font-size: 18px; cursor: pointer; }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 7px; color: var(--text-muted); }
+    .form-control {
+      width: 100%;
+      padding: 11px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+    }
+    .form-control:focus { outline: none; border-color: var(--primary); }
+    .modal-error {
+      color: var(--danger);
+      background: var(--danger-soft);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      margin-bottom: 14px;
+      display: none;
     }
 
     /* Toast */
@@ -416,365 +278,122 @@
       position: fixed;
       bottom: 25px;
       right: 25px;
-      background: #032015;
-      border: 1px solid var(--emerald);
-      color: var(--emerald);
-      padding: 12px 20px;
+      background: #064e3b;
+      border: 1px solid #10b981;
+      color: #6ee7b7;
+      padding: 12px 22px;
       border-radius: var(--radius-sm);
       font-weight: 700;
       font-size: 13.5px;
       display: flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       z-index: 100000;
       transform: translateY(100px);
       opacity: 0;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    .toast.show { transform: translateY(0); opacity: 1; }
   </style>
 </head>
 <body>
 
-  <!-- 1. Password Overlay -->
+  <!-- Auth Overlay -->
   <div id="authOverlay">
     <div class="auth-card">
-      <div class="auth-icon"><i class="fa-solid fa-mug-saucer"></i></div>
-      <h2 class="auth-title">لوميير كافيه & لاونج</h2>
-      <p class="auth-subtitle">لوحة التحكم وإدارة المحتوى والمنيو</p>
+      <div class="auth-icon"><i class="fa-solid fa-lock"></i></div>
+      <h2 class="auth-title">Pervasion SA</h2>
+      <p class="auth-subtitle">لوحة تحكم الموقع</p>
       
       <form onsubmit="handleLogin(event)">
-        <input type="password" id="authInput" class="auth-input" placeholder="أدخل كلمة المرور..." required autofocus>
-        <div id="authError" class="auth-error"><i class="fa-solid fa-circle-exclamation"></i> كلمة المرور غير صحيحة، حاول مجدداً.</div>
-        <button type="submit" class="btn btn-emerald" style="width: 100%; justify-content: center; padding: 13px;">
-          <i class="fa-solid fa-right-to-bracket"></i> دخول لوحة التحكم
+        <input type="password" id="authInput" class="auth-input" placeholder="كلمة المرور..." required autofocus>
+        <div id="authError" class="auth-error"><i class="fa-solid fa-circle-exclamation"></i> كلمة المرور غير صحيحة</div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">
+          <i class="fa-solid fa-right-to-bracket"></i> دخول
         </button>
       </form>
     </div>
   </div>
 
-  <div class="admin-layout">
-    <!-- Sidebar -->
-    <aside class="admin-sidebar">
-      <div class="sidebar-header">
-        <div class="brand-icon"><i class="fa-solid fa-mug-saucer"></i></div>
-        <div class="brand-title-box">
-          <h2>لوحة الإدارة</h2>
-          <span>LUMIÈRE CMS</span>
-        </div>
+  <!-- Header -->
+  <header class="top-header">
+    <div class="brand-group">
+      <div class="brand-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="brand-text">
+        <h2>Pervasion SA</h2>
+        <span>لوحة التحكم &bull; Cloudflare Pages</span>
       </div>
-      <nav class="sidebar-nav">
-        <button class="nav-btn active" onclick="switchTab('overview', this)">
-          <i class="fa-solid fa-chart-pie"></i>
-          <span>لوحة المعلومات</span>
-        </button>
-        <button class="nav-btn" onclick="switchTab('menu', this)">
-          <i class="fa-solid fa-utensils"></i>
-          <span>قائمة المأكولات والمشروبات</span>
-        </button>
-        <button class="nav-btn" onclick="switchTab('identity', this)">
-          <i class="fa-solid fa-store"></i>
-          <span>بيانات الكافيه والتواصل</span>
-        </button>
-        <button class="nav-btn" onclick="switchTab('hero', this)">
-          <i class="fa-solid fa-image"></i>
-          <span>واجهة الموقع والشرفة</span>
-        </button>
-        <button class="nav-btn" onclick="switchTab('bookings', this)">
-          <i class="fa-solid fa-calendar-check"></i>
-          <span>سجل الحجوزات والطلبات</span>
-        </button>
-        <button class="nav-btn" onclick="switchTab('backup', this)">
-          <i class="fa-solid fa-database"></i>
-          <span>النسخ والبيانات</span>
-        </button>
-      </nav>
-      <div class="sidebar-footer">
-        <a href="../" target="_blank" class="btn btn-glass" style="width: 100%; justify-content: center;">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          <span>عرض الموقع الحي</span>
-        </a>
-      </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="admin-main">
-      <header class="top-header">
-        <div style="font-weight: 800; font-size: 15px; color: var(--text-muted);">
-          مرحباً بك في لوحة تحكم <strong style="color:#fff;" id="topBrandName">لوميير كافيه & لاونج</strong>
-        </div>
-        <div class="header-actions">
-          <button class="btn btn-glass" onclick="openChangePwdModal()">
-            <i class="fa-solid fa-key"></i>
-            <span>تغيير كلمة المرور</span>
-          </button>
-          <button class="btn btn-danger" onclick="logoutAdmin()">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <span>خروج</span>
-          </button>
-        </div>
-      </header>
-
-      <div class="content-container">
-
-        <!-- TAB 1: OVERVIEW -->
-        <div class="tab-content active" id="tab-overview">
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fa-solid fa-mug-hot"></i></div>
-              <div>
-                <div class="stat-val" id="statMenuItems">8</div>
-                <div class="stat-lbl">أصناف المنيو النشطة</div>
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fa-solid fa-calendar-days"></i></div>
-              <div>
-                <div class="stat-val" id="statBookings">0</div>
-                <div class="stat-lbl">طلبات الحجز المسجلة</div>
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
-              <div>
-                <div class="stat-val" style="color:var(--emerald);">100%</div>
-                <div class="stat-lbl">السرعة وكفاءة CDN</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-panel">
-            <h3 class="panel-title"><i class="fa-solid fa-circle-info"></i> روابط المشروع وبيانات النشر</h3>
-            <p style="color:var(--text-muted); line-height: 1.8; margin-bottom: 16px;">
-              الموقع مستضاف بالكامل على منصة <strong>Cloudflare Pages</strong> السحابية، ومرتبط بمستودع Git على GitHub. التعديلات التي تجريها في هذه اللوحة تنعكس فورياً وبشكل حي على الموقع بدون الحاجة لإعادة رفع الملفات.
-            </p>
-            <div style="display:flex; gap:12px; flex-wrap:wrap;">
-              <a href="https://pervasionsa.com" target="_blank" class="btn btn-emerald">
-                <i class="fa-solid fa-globe"></i> رابط الموقع الرسمي (pervasionsa.com)
-              </a>
-              <a href="https://github.com/zedana01/pervasionsa" target="_blank" class="btn btn-glass">
-                <i class="fa-brands fa-github"></i> مستودع GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 2: MENU ITEMS -->
-        <div class="tab-content" id="tab-menu">
-          <div class="card-panel">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
-              <h3 class="panel-title" style="margin-bottom:0;"><i class="fa-solid fa-utensils"></i> قائمة المأكولات والمشروبات</h3>
-              <button class="btn btn-emerald" onclick="openAddItemModal()">
-                <i class="fa-solid fa-plus"></i> إضافة صنف جديد
-              </button>
-            </div>
-            <div style="overflow-x:auto;">
-              <table class="menu-table">
-                <thead>
-                  <tr>
-                    <th>الصورة</th>
-                    <th>اسم الصنف</th>
-                    <th>التصنيف</th>
-                    <th>السعر (ريال)</th>
-                    <th>الشارة</th>
-                    <th>إجراءات</th>
-                  </tr>
-                </thead>
-                <tbody id="menuTableBody">
-                  <!-- Rendered via JS -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 3: IDENTITY & CONTACT -->
-        <div class="tab-content" id="tab-identity">
-          <div class="card-panel">
-            <h3 class="panel-title"><i class="fa-solid fa-store"></i> بيانات الكافيه والهوية</h3>
-            <form onsubmit="saveIdentitySettings(event)">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">اسم الكافيه بالعربية</label>
-                  <input type="text" id="cfgBrandName" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">الشعار بالإنجليزية (Tagline)</label>
-                  <input type="text" id="cfgBrandTagline" class="form-control" required>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">رقم الهاتف للاتصال المباشر</label>
-                  <input type="text" id="cfgPhone" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">رقم الواتساب لاستقبال الحجوزات</label>
-                  <input type="text" id="cfgWhatsapp" class="form-control" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label">العنوان والموقع الجغرافي</label>
-                <input type="text" id="cfgAddress" class="form-control" required>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">أوقات العمل (الأيام العادية)</label>
-                  <input type="text" id="cfgHoursWeekday" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">أوقات العمل (نهاية الأسبوع)</label>
-                  <input type="text" id="cfgHoursWeekend" class="form-control" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label">نص شريط الإعلان العلوي (Announcement Bar)</label>
-                <input type="text" id="cfgAnnouncement" class="form-control" required>
-              </div>
-              <button type="submit" class="btn btn-emerald">
-                <i class="fa-solid fa-floppy-disk"></i> حفظ التعديلات
-              </button>
-            </form>
-          </div>
-        </div>
-
-        <!-- TAB 4: HERO & TERRACE -->
-        <div class="tab-content" id="tab-hero">
-          <div class="card-panel">
-            <h3 class="panel-title"><i class="fa-solid fa-image"></i> واجهة الموقع والبانر الترحيبي</h3>
-            <form onsubmit="saveHeroSettings(event)">
-              <div class="form-group">
-                <label class="form-label">العنوان الرئيسي للبانر (H1)</label>
-                <input type="text" id="cfgHeroTitle" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">الوصف الترحيبي (Subtitle)</label>
-                <textarea id="cfgHeroSubtitle" class="form-control" rows="3" required></textarea>
-              </div>
-              <button type="submit" class="btn btn-emerald">
-                <i class="fa-solid fa-floppy-disk"></i> حفظ إعدادات الواجهة
-              </button>
-            </form>
-          </div>
-        </div>
-
-        <!-- TAB 5: BOOKINGS -->
-        <div class="tab-content" id="tab-bookings">
-          <div class="card-panel">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
-              <h3 class="panel-title" style="margin-bottom:0;"><i class="fa-solid fa-calendar-check"></i> سجل طلبات الحجز</h3>
-              <button class="btn btn-glass" onclick="clearAllBookings()">
-                <i class="fa-solid fa-trash"></i> مسح السجل
-              </button>
-            </div>
-            <div style="overflow-x:auto;">
-              <table class="menu-table">
-                <thead>
-                  <tr>
-                    <th>رقم الحجز</th>
-                    <th>عدد الضيوف</th>
-                    <th>التاريخ</th>
-                    <th>الوقت</th>
-                    <th>الموقع المفضل</th>
-                    <th>تاريخ التسجيل</th>
-                  </tr>
-                </thead>
-                <tbody id="bookingsTableBody">
-                  <!-- Rendered via JS -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 6: BACKUP & DATA -->
-        <div class="tab-content" id="tab-backup">
-          <div class="card-panel">
-            <h3 class="panel-title"><i class="fa-solid fa-database"></i> النسخ الاحتياطي والبيانات</h3>
-            <p style="color:var(--text-muted); line-height:1.8; margin-bottom:18px;">
-              يمكنك تصدير نسخة كاملة من بيانات الكافيه والمنيو بصيغة JSON، أو استعادة نسخة سابقة، أو إعادة ضبط الموقع إلى الإعدادات الافتراضية.
-            </p>
-            <div style="display:flex; gap:12px; flex-wrap:wrap;">
-              <button class="btn btn-emerald" onclick="exportDataJSON()">
-                <i class="fa-solid fa-download"></i> تصدير البيانات (JSON)
-              </button>
-              <button class="btn btn-glass" onclick="document.getElementById('importFile').click()">
-                <i class="fa-solid fa-upload"></i> استيراد ملف بيانات
-              </button>
-              <input type="file" id="importFile" style="display:none;" accept=".json" onchange="importDataJSON(event)">
-              <button class="btn btn-danger" onclick="resetDefaults()">
-                <i class="fa-solid fa-rotate-left"></i> استعادة الإعدادات الافتراضية
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </main>
-  </div>
-
-  <!-- Add / Edit Menu Item Modal -->
-  <div class="modal-backdrop" id="menuModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h4 class="modal-title" id="menuModalTitle">إضافة صنف جديد</h4>
-        <button class="modal-close" onclick="closeMenuModal()"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <form onsubmit="handleSaveMenuItem(event)">
-        <input type="hidden" id="itemEditId">
-        <div class="form-group">
-          <label class="form-label">اسم الصنف</label>
-          <input type="text" id="itemName" class="form-control" required placeholder="مثلاً: كيمكس كولومبيا">
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">التصنيف</label>
-            <select id="itemCategory" class="form-control" required>
-              <option value="coffee">قهوة مختصة (coffee)</option>
-              <option value="brunch">أطباق برانش وفطور (brunch)</option>
-              <option value="sweets">حلى ومخبوزات (sweets)</option>
-              <option value="drinks">مشروبات منعشة (drinks)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">السعر (بالريال)</label>
-            <input type="number" id="itemPrice" class="form-control" required min="1" placeholder="28">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">مسار أو رابط الصورة</label>
-            <input type="text" id="itemImage" class="form-control" required placeholder="images/v60.jpg">
-          </div>
-          <div class="form-group">
-            <label class="form-label">شارة مميزة (اختياري)</label>
-            <input type="text" id="itemBadge" class="form-control" placeholder="الأكثر طلباً">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">الوصف والمكونات</label>
-          <textarea id="itemDesc" class="form-control" rows="2" placeholder="تفاصيل الصنف وإيحاءات المذاق..." required></textarea>
-        </div>
-        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
-          <button type="button" class="btn btn-glass" onclick="closeMenuModal()">إلغاء</button>
-          <button type="submit" class="btn btn-emerald">حفظ الصنف</button>
-        </div>
-      </form>
     </div>
-  </div>
+    <div class="header-actions">
+      <a href="../" target="_blank" class="btn btn-glass">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <span>معاينة الموقع</span>
+      </a>
+      <button class="btn btn-primary" onclick="openPasswordModal()">
+        <i class="fa-solid fa-key"></i>
+        <span>تغيير كلمة المرور</span>
+      </button>
+      <button class="btn btn-danger" onclick="logoutAdmin()">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>خروج</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="main-wrap">
+    <div class="card">
+      <h3 class="card-title"><i class="fa-solid fa-circle-info"></i> حالة الموقع والاستضافة</h3>
+      
+      <div class="info-grid">
+        <div class="info-box">
+          <div class="info-lbl">النطاق الرسمي:</div>
+          <div class="info-val">pervasionsa.com</div>
+        </div>
+        <div class="info-box">
+          <div class="info-lbl">منصة الاستضافة:</div>
+          <div class="info-val" style="color:var(--success);">Cloudflare Pages</div>
+        </div>
+        <div class="info-box">
+          <div class="info-lbl">حالة الصفحة:</div>
+          <div class="info-val" style="color:#f59e0b;">تحت الصيانة (Active)</div>
+        </div>
+        <div class="info-box">
+          <div class="info-lbl">خادم Contabo القديم:</div>
+          <div class="info-val" style="color:var(--danger);">محذوف بالكامل</div>
+        </div>
+      </div>
+
+      <div style="font-size:14px; font-weight:700; color:#fff; margin-bottom:8px;">
+        <i class="fa-solid fa-image" style="color:var(--primary); margin-left:6px;"></i> معاينة صفحة الموقع الحالية:
+      </div>
+      <div class="preview-box">
+        <img src="../images/under-construction.png" alt="Under Construction">
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title"><i class="fa-solid fa-key"></i> أمان لوحة التحكم</h3>
+      <p style="color:var(--text-muted); font-size:14px; margin-bottom:16px;">
+        يمكنك تغيير كلمة مرور لوحة التحكم في أي وقت لاختيار كلمة المرور المناسبة لك.
+      </p>
+      <button class="btn btn-primary" onclick="openPasswordModal()">
+        <i class="fa-solid fa-key"></i>
+        <span>تغيير كلمة المرور الآن</span>
+      </button>
+    </div>
+  </main>
 
   <!-- Change Password Modal -->
-  <div class="modal-backdrop" id="changePwdModal">
+  <div class="modal-backdrop" id="passwordModal">
     <div class="modal-box">
       <div class="modal-header">
-        <h4 class="modal-title">تغيير كلمة مرور لوحة التحكم</h4>
-        <button class="modal-close" onclick="closeChangePwdModal()"><i class="fa-solid fa-xmark"></i></button>
+        <h4 class="modal-title">تغيير كلمة المرور</h4>
+        <button class="modal-close" onclick="closePasswordModal()"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <form onsubmit="handleChangePassword(event)">
+        <div id="modalError" class="modal-error"></div>
         <div class="form-group">
           <label class="form-label">كلمة المرور الحالية</label>
           <input type="password" id="curPassword" class="form-control" required placeholder="كلمة المرور الحالية">
@@ -787,360 +406,109 @@
           <label class="form-label">تأكيد كلمة المرور الجديدة</label>
           <input type="password" id="confirmPassword" class="form-control" required minlength="4" placeholder="أعد إدخال كلمة المرور">
         </div>
-        <div id="pwdError" style="color:var(--danger); font-size:13px; margin-bottom:12px; display:none;"></div>
         <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:18px;">
-          <button type="button" class="btn btn-glass" onclick="closeChangePwdModal()">إلغاء</button>
-          <button type="submit" class="btn btn-emerald">تحديث كلمة المرور</button>
+          <button type="button" class="btn btn-glass" onclick="closePasswordModal()">إلغاء</button>
+          <button type="submit" class="btn btn-primary">حفظ كلمة المرور</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Toast Notification -->
+  <!-- Toast -->
   <div class="toast" id="toastMsg">
     <i class="fa-solid fa-circle-check"></i>
-    <span id="toastText">تم الحفظ بنجاح!</span>
+    <span id="toastText">تمت العملية بنجاح!</span>
   </div>
 
-  <script src="../js/lumiere-sync.js"></script>
   <script>
-    // Admin CMS Engine
+    const INITIAL_PIN = 'admin1234';
+
+    function getAdminPin() {
+      return localStorage.getItem('pervasionsa_admin_pin') || INITIAL_PIN;
+    }
+
     function checkAuth() {
-      const isAuth = sessionStorage.getItem(LUMIERE_AUTH_KEY);
-      if (isAuth === 'true') {
-        document.getElementById('authOverlay').style.display = 'none';
-      } else {
-        document.getElementById('authOverlay').style.display = 'flex';
+      const isAuth = sessionStorage.getItem('pervasionsa_admin_auth') === 'true' || localStorage.getItem('pervasionsa_admin_auth') === 'true';
+      const overlay = document.getElementById('authOverlay');
+      if (isAuth && overlay) {
+        overlay.style.display = 'none';
       }
     }
 
     function handleLogin(e) {
       e.preventDefault();
-      const pwd = document.getElementById('authInput').value.trim();
-      const data = getLumiereData();
-      const currentPwd = data.settings.adminPassword || 'Abdo@ProF_2000';
-
-      if (pwd === currentPwd) {
-        sessionStorage.setItem(LUMIERE_AUTH_KEY, 'true');
+      const input = document.getElementById('authInput').value.trim();
+      const err = document.getElementById('authError');
+      if (input === getAdminPin()) {
+        sessionStorage.setItem('pervasionsa_admin_auth', 'true');
+        localStorage.setItem('pervasionsa_admin_auth', 'true');
         document.getElementById('authOverlay').style.display = 'none';
-        initCMS();
+        showToast('تم تسجيل الدخول بنجاح!');
       } else {
-        document.getElementById('authError').style.display = 'block';
+        err.style.display = 'block';
       }
     }
 
     function logoutAdmin() {
-      sessionStorage.removeItem(LUMIERE_AUTH_KEY);
-      location.reload();
-    }
-
-    function switchTab(tabId, btn) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
-
-      const target = document.getElementById('tab-' + tabId);
-      if (target) target.classList.add('active');
-      if (btn) btn.classList.add('active');
-    }
-
-    function showToast(msg) {
-      const toast = document.getElementById('toastMsg');
-      document.getElementById('toastText').textContent = msg;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3000);
-    }
-
-    function initCMS() {
-      const data = getLumiereData();
-      const s = data.settings;
-
-      document.getElementById('topBrandName').textContent = s.brandName;
-
-      // Overview Stats
-      document.getElementById('statMenuItems').textContent = data.menu.length;
-      const bookings = JSON.parse(localStorage.getItem('lumiere_bookings_data') || '[]');
-      document.getElementById('statBookings').textContent = bookings.length;
-
-      // Populate Identity
-      document.getElementById('cfgBrandName').value = s.brandName || '';
-      document.getElementById('cfgBrandTagline').value = s.brandTagline || '';
-      document.getElementById('cfgPhone').value = s.phone || '';
-      document.getElementById('cfgWhatsapp').value = s.whatsapp || '';
-      document.getElementById('cfgAddress').value = s.address || '';
-      document.getElementById('cfgHoursWeekday').value = s.hoursWeekday || '';
-      document.getElementById('cfgHoursWeekend').value = s.hoursWeekend || '';
-      document.getElementById('cfgAnnouncement').value = s.announcement || '';
-
-      // Populate Hero
-      document.getElementById('cfgHeroTitle').value = s.heroTitle || '';
-      document.getElementById('cfgHeroSubtitle').value = s.heroSubtitle || '';
-
-      // Render Menu Table & Bookings
-      renderMenuTable();
-      renderBookingsTable();
-    }
-
-    function renderMenuTable() {
-      const data = getLumiereData();
-      const tbody = document.getElementById('menuTableBody');
-      if (!tbody) return;
-
-      let html = '';
-      data.menu.forEach((item, index) => {
-        const badge = item.badge ? `<span class="badge-tag">${item.badge}</span>` : '<span style="color:#64748B;">-</span>';
-        const catMap = {
-          coffee: 'قهوة مختصة',
-          brunch: 'برانش وفطور',
-          sweets: 'حلى ومخبوزات',
-          drinks: 'مشروبات منعشة'
-        };
-        html += `
-          <tr>
-            <td><img src="../${item.image}" class="item-img-thumb" onerror="this.src='../images/v60.jpg'"></td>
-            <td><strong>${item.name}</strong><br><small style="color:var(--text-muted);">${item.desc}</small></td>
-            <td>${catMap[item.category] || item.category}</td>
-            <td><strong style="color:var(--emerald);">${item.price}</strong> ريال</td>
-            <td>${badge}</td>
-            <td>
-              <button class="btn btn-glass" style="padding:5px 10px; font-size:12px;" onclick="openEditItemModal('${item.id}')">
-                <i class="fa-solid fa-pen"></i> تعديل
-              </button>
-              <button class="btn btn-danger" style="padding:5px 10px; font-size:12px;" onclick="deleteMenuItem('${item.id}')">
-                <i class="fa-solid fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-        `;
-      });
-      tbody.innerHTML = html;
-      document.getElementById('statMenuItems').textContent = data.menu.length;
-    }
-
-    function renderBookingsTable() {
-      const bookings = JSON.parse(localStorage.getItem('lumiere_bookings_data') || '[]');
-      const tbody = document.getElementById('bookingsTableBody');
-      if (!tbody) return;
-
-      if (bookings.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:24px; color:var(--text-muted);">لا توجد طلبات حجز مسجلة حتى الآن.</td></tr>`;
-        return;
-      }
-
-      let html = '';
-      bookings.forEach(b => {
-        html += `
-          <tr>
-            <td><strong>${b.id}</strong></td>
-            <td>${b.guests} ضيوف</td>
-            <td>${b.date}</td>
-            <td>${b.time}</td>
-            <td>${b.location}</td>
-            <td><small style="color:var(--text-muted);">${b.createdAt}</small></td>
-          </tr>
-        `;
-      });
-      tbody.innerHTML = html;
-      document.getElementById('statBookings').textContent = bookings.length;
-    }
-
-    function clearAllBookings() {
-      if (confirm('هل أنت متأكد من مسح جميع طلبات الحجز؟')) {
-        localStorage.removeItem('lumiere_bookings_data');
-        renderBookingsTable();
-        showToast('تم مسح سجل الحجوزات!');
+      if (confirm('هل تريد تسجيل الخروج؟')) {
+        sessionStorage.removeItem('pervasionsa_admin_auth');
+        localStorage.removeItem('pervasionsa_admin_auth');
+        location.reload();
       }
     }
 
-    // Modal Actions
-    function openAddItemModal() {
-      document.getElementById('menuModalTitle').textContent = 'إضافة صنف جديد';
-      document.getElementById('itemEditId').value = '';
-      document.getElementById('itemName').value = '';
-      document.getElementById('itemCategory').value = 'coffee';
-      document.getElementById('itemPrice').value = '';
-      document.getElementById('itemImage').value = 'images/v60.jpg';
-      document.getElementById('itemBadge').value = '';
-      document.getElementById('itemDesc').value = '';
-      document.getElementById('menuModal').classList.add('open');
-    }
-
-    function openEditItemModal(id) {
-      const data = getLumiereData();
-      const item = data.menu.find(m => m.id === id);
-      if (!item) return;
-
-      document.getElementById('menuModalTitle').textContent = 'تعديل الصنف: ' + item.name;
-      document.getElementById('itemEditId').value = item.id;
-      document.getElementById('itemName').value = item.name;
-      document.getElementById('itemCategory').value = item.category;
-      document.getElementById('itemPrice').value = item.price;
-      document.getElementById('itemImage').value = item.image;
-      document.getElementById('itemBadge').value = item.badge || '';
-      document.getElementById('itemDesc').value = item.desc;
-      document.getElementById('menuModal').classList.add('open');
-    }
-
-    function closeMenuModal() {
-      document.getElementById('menuModal').classList.remove('open');
-    }
-
-    function handleSaveMenuItem(e) {
-      e.preventDefault();
-      const data = getLumiereData();
-      const editId = document.getElementById('itemEditId').value;
-
-      const itemObj = {
-        id: editId || 'item-' + Date.now().toString().slice(-6),
-        name: document.getElementById('itemName').value,
-        category: document.getElementById('itemCategory').value,
-        price: parseInt(document.getElementById('itemPrice').value),
-        image: document.getElementById('itemImage').value,
-        badge: document.getElementById('itemBadge').value,
-        desc: document.getElementById('itemDesc').value
-      };
-
-      if (editId) {
-        const index = data.menu.findIndex(m => m.id === editId);
-        if (index !== -1) data.menu[index] = itemObj;
-      } else {
-        data.menu.push(itemObj);
-      }
-
-      saveLumiereData(data);
-      closeMenuModal();
-      renderMenuTable();
-      showToast('تم حفظ الصنف بنجاح!');
-    }
-
-    function deleteMenuItem(id) {
-      if (confirm('هل أنت متأكد من حذف هذا الصنف من المنيو؟')) {
-        const data = getLumiereData();
-        data.menu = data.menu.filter(m => m.id !== id);
-        saveLumiereData(data);
-        renderMenuTable();
-        showToast('تم حذف الصنف!');
-      }
-    }
-
-    function saveIdentitySettings(e) {
-      e.preventDefault();
-      const data = getLumiereData();
-      data.settings.brandName = document.getElementById('cfgBrandName').value;
-      data.settings.brandTagline = document.getElementById('cfgBrandTagline').value;
-      data.settings.phone = document.getElementById('cfgPhone').value;
-      data.settings.whatsapp = document.getElementById('cfgWhatsapp').value;
-      data.settings.address = document.getElementById('cfgAddress').value;
-      data.settings.hoursWeekday = document.getElementById('cfgHoursWeekday').value;
-      data.settings.hoursWeekend = document.getElementById('cfgHoursWeekend').value;
-      data.settings.announcement = document.getElementById('cfgAnnouncement').value;
-
-      saveLumiereData(data);
-      document.getElementById('topBrandName').textContent = data.settings.brandName;
-      showToast('تم حفظ بيانات الكافيه والهوية بنجاح!');
-    }
-
-    function saveHeroSettings(e) {
-      e.preventDefault();
-      const data = getLumiereData();
-      data.settings.heroTitle = document.getElementById('cfgHeroTitle').value;
-      data.settings.heroSubtitle = document.getElementById('cfgHeroSubtitle').value;
-
-      saveLumiereData(data);
-      showToast('تم حفظ إعدادات الواجهة!');
-    }
-
-    // Change Password
-    function openChangePwdModal() {
+    function openPasswordModal() {
+      document.getElementById('modalError').style.display = 'none';
       document.getElementById('curPassword').value = '';
       document.getElementById('newPassword').value = '';
       document.getElementById('confirmPassword').value = '';
-      document.getElementById('pwdError').style.display = 'none';
-      document.getElementById('changePwdModal').classList.add('open');
+      document.getElementById('passwordModal').classList.add('open');
+      setTimeout(() => document.getElementById('curPassword').focus(), 150);
     }
 
-    function closeChangePwdModal() {
-      document.getElementById('changePwdModal').classList.remove('open');
+    function closePasswordModal() {
+      document.getElementById('passwordModal').classList.remove('open');
     }
 
     function handleChangePassword(e) {
       e.preventDefault();
-      const data = getLumiereData();
-      const cur = document.getElementById('curPassword').value;
-      const nw = document.getElementById('newPassword').value;
-      const cnf = document.getElementById('confirmPassword').value;
-      const errEl = document.getElementById('pwdError');
+      const cur = document.getElementById('curPassword').value.trim();
+      const newP = document.getElementById('newPassword').value.trim();
+      const conf = document.getElementById('confirmPassword').value.trim();
+      const errBox = document.getElementById('modalError');
 
-      const currentPwd = data.settings.adminPassword || 'Abdo@ProF_2000';
-      if (cur !== currentPwd) {
-        errEl.textContent = 'كلمة المرور الحالية غير صحيحة!';
-        errEl.style.display = 'block';
+      if (cur !== getAdminPin()) {
+        errBox.innerText = 'كلمة المرور الحالية غير صحيحة!';
+        errBox.style.display = 'block';
         return;
       }
-      if (nw.length < 4) {
-        errEl.textContent = 'كلمة المرور الجديدة يجب أن تكون 4 خانات على الأقل!';
-        errEl.style.display = 'block';
+      if (newP.length < 4) {
+        errBox.innerText = 'كلمة المرور يجب أن تكون 4 خانات على الأقل!';
+        errBox.style.display = 'block';
         return;
       }
-      if (nw !== cnf) {
-        errEl.textContent = 'كلمتا المرور غير متطابقتين!';
-        errEl.style.display = 'block';
+      if (newP !== conf) {
+        errBox.innerText = 'كلمتا المرور غير متطابقتين!';
+        errBox.style.display = 'block';
         return;
       }
 
-      data.settings.adminPassword = nw;
-      saveLumiereData(data);
-      closeChangePwdModal();
-      showToast('تم تحديث كلمة المرور بنجاح!');
+      localStorage.setItem('pervasionsa_admin_pin', newP);
+      closePasswordModal();
+      showToast('تم تغيير كلمة المرور بنجاح وحفظها!');
     }
 
-    // Backup & Restore
-    function exportDataJSON() {
-      const data = getLumiereData();
-      const str = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data, null, 2));
-      const a = document.createElement('a');
-      a.setAttribute('href', str);
-      a.setAttribute('download', 'lumiere_site_backup.json');
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      showToast('تم تصدير ملف النسخة الاحتياطية!');
+    function showToast(msg) {
+      const toast = document.getElementById('toastMsg');
+      document.getElementById('toastText').innerText = msg;
+      toast.classList.add('show');
+      clearTimeout(toast._timeout);
+      toast._timeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 4000);
     }
 
-    function importDataJSON(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(evt) {
-        try {
-          const parsed = JSON.parse(evt.target.result);
-          if (parsed && parsed.settings && parsed.menu) {
-            saveLumiereData(parsed);
-            initCMS();
-            showToast('تم استيراد البيانات بنجاح!');
-          } else {
-            alert('صيغة الملف غير متوافقة.');
-          }
-        } catch(err) {
-          alert('خطأ أثناء قراءة ملف JSON.');
-        }
-      };
-      reader.readAsText(file);
-    }
-
-    function resetDefaults() {
-      if (confirm('هل أنت متأكد من إعادة ضبط المصنع؟ سيتم مسح أي تعديلات سابقة والعودة للمحتوى الأصلي.')) {
-        localStorage.removeItem(LUMIERE_STORAGE_KEY);
-        initCMS();
-        showToast('تمت استعادة الإعدادات الافتراضية!');
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      checkAuth();
-      if (sessionStorage.getItem(LUMIERE_AUTH_KEY) === 'true') {
-        initCMS();
-      }
-    });
+    document.addEventListener('DOMContentLoaded', checkAuth);
   </script>
 </body>
 </html>
